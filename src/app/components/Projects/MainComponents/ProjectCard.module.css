@@ -1,0 +1,10 @@
+/* ProjectCard.module.css */
+.link {
+    color: rgb(83, 183, 254);
+    text-decoration: none;
+  }
+  
+  .link:hover {
+    color: blue;
+    text-decoration: underline;
+  }

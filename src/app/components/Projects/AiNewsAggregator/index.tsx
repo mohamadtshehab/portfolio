@@ -79,7 +79,7 @@ const AiNewsAggregator: React.FC = () => {
         onEnded={handleVideoEnded}
       />
       <p className="mt-4 text-sm text-white/70 text-center">
-        Note: A message will appear when the video ends.
+        Note: A message will appear at the end of the workflow.
       </p>
     </div>
   ) : showImage ? (

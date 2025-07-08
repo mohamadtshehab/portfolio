@@ -20,6 +20,23 @@
   --animate-slideUp: slideUp 0.4s cubic-bezier(0.4, 0, 0.2, 1);
   --animate-shine: shine 5s linear infinite;
   --animate-gradient: gradient 8s linear infinite;
+  --animate-graceful-fade: gracefulFadeInOut 1.5s forwards;
+}
+
+/* Define custom keyframes */
+@keyframes gracefulFadeInOut {
+  0% {
+    opacity: 0;
+  }
+  15% {
+    opacity: 1
+  }
+  60% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
 }
 
 

@@ -149,8 +149,27 @@ const certificates = [
       description: `Successfully completed a verified Course Certificate in Introduction to Artificial Intelligence (AI), demonstrating an understanding of fundamental AI concepts, applications across various domains, and core principles of machine learning, deep learning, and neural networks. Achieved a grade of 91.66%. This course also covered the role of generative AI in business operations, identifying innovation opportunities, and designing ethical generative AI solutions for organizational challenges.`,
       skills: ['Natural Language Processing', 'Generative AI', 'ChatGPT'],
       courseraUrl: 'https://coursera.org/share/63440a205d4aabb6773832044c5d0d93',
-      image: '/certificates/introduction-to-artificial-intelligence.jpeg', // Assuming a relevant image name
+      image: '/certificates/introduction-to-artificial-intelligence.jpeg',
       date: 'February 26, 2023'
+    },
+    {
+      title: 'Python Essentials for MLOps',    
+      institution: "Duke University",
+      description: `Completed with a grade of 94%. Wrote, ran and debugged tests using Pytest. Interacted with APIs and SDKs to build command-line tools and HTTP APIs to solve and automate Machine Learning problems.`,
+      skills: ['Command-Line Interface',
+'Software Testing',
+'Test Automation',
+'Data Manipulation',
+'NumPy',
+'Machine Learning',
+'Data Import/Export',
+'Program Development',
+'Scripting',
+'MLOps',
+'Pandas'],
+      courseraUrl: 'https://coursera.org/share/e0df2ef182ae3dd90470d2b45359cbdf',
+      image: '/certificates/python-essentials-mlops.png',
+      date: 'Jul 3, 2025'
     }
 ];
 

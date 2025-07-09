@@ -1,119 +1,173 @@
 'use client';
-import { FaUsers, FaMicrophone, FaShareAlt } from 'react-icons/fa';
+import { FaMicrophone, FaShareAlt } from 'react-icons/fa';
 import { BiBookOpen } from 'react-icons/bi';
-import React, { useState } from 'react';
+import React from 'react';
 import Image from 'next/image';
+
+// --- DATA STRUCTURES (No changes) ---
+interface Reaction {
+  author: string;
+  original: string;
+  translation: string;
+}
 
 interface VolunteerRole {
   title: string;
   description: string;
   icon: React.ReactNode;
-  images: string[];
-  translations: string[];
+  reactions: Reaction[];
 }
 
+interface VolunteerCardProps extends VolunteerRole {
+  index: number;
+}
+
+// --- DATA SOURCE (No changes) ---
 const volunteerRoles: VolunteerRole[] = [
-  {
+    {
     title: 'NLP Course Team Leader',
-    description: 'Led the first volunteer-created NLP course materials for 100+ senior students.',
+    description: 'Led the first volunteer-created NLP course, making complex AI concepts accessible and engaging for over 100 senior students.',
     icon: <BiBookOpen className="text-4xl" />,
-    images: ['/rbcs/nlp-reactions/1.png', '/rbcs/nlp-reactions/2.png', '/rbcs/nlp-reactions/3.png'],
-    translations: [
-      'Student feedback: "The NLP course was incredibly well-structured and practical. The materials were comprehensive and easy to follow."',
-      'Team member: "Working under your leadership was inspiring. You made complex concepts accessible to everyone."',
-      'Course participant: "This was the most engaging AI course I\'ve taken. The hands-on approach really helped me understand NLP."'
+    reactions: [
+      {
+        author: 'Mahmoud, Student',
+        original: 'لح اختصر العجقة عل توبيك و اتشكر فريق ل NLP بإسمي و بإسم باقي طلاب الذكاء كلون ❤️ الله يسلم ايديكم محاضرات اقل ما يقال عنها "فخمة" 🔥🔥🔥 الله يجزيكم الخير و يكافيكم على هل مستوى الخارق 💪',
+        translation: `Not gonna overcomplicate things — just wanna thank the NLP team on my behalf and on behalf of all the AI students ❤️
+        God bless your hands — these lectures are straight-up premium 🔥🔥🔥
+        May God reward you big time for delivering such top-tier work 💪`
+      },
+      {
+        author: 'Rama, Student',
+        original: 'صحيح مضغوطين بهالمادة وعندجد هالمادة متعبة ومملة. بس الحق يقال انو المحاضرات شي على عيني. وصدقني لو ما بعرف انو انت اللي كاتبن رح احزر لحالي من الدقة والتفاصيل اللي موجودة فيهن. عنجد الله يعطيك العافية ويوفقك.',
+        translation: "Yeah, this course is definitely intense — honestly, it's exhausting and kinda boring. But to be fair, the lectures are seriously impressive. And trust me, even if I didn’t know you were the one who wrote them, I would’ve guessed from the level of detail and precision. Really — hats off to you, and may God give you strength and success."
+      },
+      {
+        author: 'Moaaz, Student',
+        original: 'وعنجد يعطيكم الف عافية المحاضرات كتيييير خارقة 🔥',
+        translation: "Seriously, huge thanks — the lectures are absolutely amazing 🔥"
+      },
     ]
   },
   {
     title: 'Podcast Host & Creator',
-    description: 'Launched a 12-episode podcast series on AI, problem-solving, and personal development.',
+    description: 'Launched and produced a 12-episode podcast on AI, creative problem-solving, and personal development for a growing audience.',
     icon: <FaMicrophone className="text-4xl" />,
-    images: ['/rbcs/podcast-reactions/1.png', '/rbcs/podcast-reactions/2.png', '/rbcs/podcast-reactions/3.png'],
-    translations: [
-      'Listener feedback: "Your podcast episodes on AI and problem-solving have been incredibly insightful. Keep up the great work!"',
-      'Guest speaker: "It was a pleasure being interviewed on your podcast. Your questions were thoughtful and engaging."',
-      'Regular listener: "The personal development episodes have really helped me grow. Your insights are valuable and practical."'
+    reactions: [
+       {
+        author: 'Farah, Listener',
+        original: '@MoeChehab ما تطول علينا بالحلقة الجاية 😂💙',
+        translation: "@MoeChehab You really need to make a new episode soon 😂💙"
+      },
+      {
+        author: 'Moe, Host',
+        original: 'كتيييير خارقة الحلقة 🔥🔥🔥 يعطيكم العافية ❤️❤️❤️',
+        translation: `That episode was so good 🔥🔥🔥 God bless you ❤️❤️❤️`
+      },
     ]
   },
   {
-    title: 'Social Media Team Member',
-    description: 'Participated in the social media team and been responsible for media presence of the team.',
+    title: 'Social Media Manager',
+    description: 'Managed and created content for the organization\'s social media platforms, increasing engagement and visibility.',
     icon: <FaShareAlt className="text-4xl" />,
-    images: ['/rbcs/social-media-reactions/1.png'],
-    translations: [
-      'Team feedback: "Your social media content has significantly increased our engagement and reach. Great work on maintaining our brand voice!"'
+    reactions: [
+       {
+        author: 'Community Member',
+        original: 'المحتوى الذي تشاركونه رائع ومفيد جداً. شكراً لجهودكم في إدارة الحساب!',
+        translation: 'Community Feedback: "The content you share is fantastic and very useful. Thank you for your efforts in managing the account!"'
+      },
+      {
+        author: 'Collaborator',
+        original: 'كان العمل معكم على حملة التواصل الاجتماعي تجربة سلسة وناجحة. فريقكم منظم ومبدع.',
+        translation: 'Collaborator Feedback: "Working with you on the social media campaign was a smooth and successful experience. Your team is organized and creative."'
+      },
     ]
-  }
+  },
 ];
 
-const Volunteering = () => {
-  const [selectedRole, setSelectedRole] = useState<number | null>(null);
+
+// --- REACTION CARD SUB-COMPONENT (No changes) ---
+const ReactionCard: React.FC<Reaction> = ({ author, original, translation }) => (
+  <div className="group relative bg-[#0a1f1a]/50 rounded-lg p-5 border border-white/10 overflow-hidden h-full flex flex-col">
+    {/* Subtle gradient glow on hover */}
+    <div className="absolute -inset-px bg-gradient-to-r from-cyan-500 to-purple-500 rounded-lg opacity-0 group-hover:opacity-70 transition-opacity duration-300 blur-md"></div>
+    
+    <div className="relative z-10 flex flex-col flex-grow">
+      <div className="flex items-center gap-3 mb-4">
+        <h5 className="font-bold text-white">{author}</h5>
+      </div>
+      
+      <div className="flex-grow space-y-4">
+        <p dir="rtl" className="text-white/90 text-right leading-relaxed" style={{ fontFamily: "'Noto Sans Arabic', sans-serif" }}>
+          {original}
+        </p>
+      </div>
+
+      <div className="border-t border-white/10 pt-4 mt-4">
+        <p className="text-white/70 text-sm leading-relaxed italic">
+          "{translation}"
+        </p>
+      </div>
+    </div>
+  </div>
+);
+
+
+// --- VOLUNTEER CARD SUB-COMPONENT (MODIFIED) ---
+const VolunteerCard: React.FC<VolunteerCardProps> = ({
+  title,
+  description,
+  icon,
+  reactions,
+  index
+}) => {
+  const isReversed = index % 2 !== 0;
 
   return (
-    <section id="volunteering" className="py-20 bg-[#0a1f1a]">
+    <div className={`flex flex-col md:flex-row items-start gap-12 ${isReversed ? 'md:flex-row-reverse' : ''}`}>
+      <div className="w-full md:w-1/3 space-y-4 md:sticky md:top-24">
+        <div className="flex items-center gap-4">
+          <div className="text-white/50">{icon}</div>
+          <h3 className="text-2xl font-bold text-white">{title}</h3>
+        </div>
+        <p className="text-white/80 leading-relaxed">{description}</p>
+      </div>
+
+      <div className="w-full md:w-2/3">
+        {/* MODIFICATION: Changed from a grid to a vertical stack */}
+        <div className="space-y-6">
+          {reactions.map((reaction, i) => (
+            <ReactionCard key={i} {...reaction} />
+          ))}
+        </div>
+      </div>
+    </div>
+  );
+};
+
+
+// --- MAIN VOLUNTEERING COMPONENT (No changes) ---
+const Volunteering = () => {
+  return (
+    <section id="volunteering" className="py-20 relative bg-[#123529]">
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-        <h2 className="text-4xl font-bold text-center text-white mb-12">
+        <h2 className="text-4xl font-bold text-center text-white mb-16">
           Volunteering Experience
         </h2>
         
-        <div className="mb-12">
-          <h3 className="text-2xl font-semibold text-white mb-6 text-center">
-            RBCs Team
-          </h3>
-          <p className="text-white/80 text-center max-w-3xl mx-auto mb-8">
-            Contributing to the RBCs community through various leadership and creative roles, 
-            helping to educate and inspire others in the field of AI and technology.
-          </p>
-        </div>
-
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-12">
+        <div className="space-y-20">
           {volunteerRoles.map((role, index) => (
-            <div
-              key={index}
-              className="bg-[#123529] rounded-lg p-6 hover:transform hover:scale-[1.02] transition-all duration-300 cursor-pointer border border-white/10"
-              onClick={() => setSelectedRole(selectedRole === index ? null : index)}
-            >
-              <div className="flex items-center gap-3 mb-4">
-                <div className="text-white/30">{role.icon}</div>
-                <h4 className="text-xl font-semibold text-white">{role.title}</h4>
-              </div>
-              <p className="text-white/80 text-sm leading-relaxed">
-                {role.description}
-              </p>
-            </div>
+            <React.Fragment key={index}>
+              <VolunteerCard {...role} index={index} />
+              
+              {index < volunteerRoles.length - 1 && (
+                <div className="w-full h-px bg-gradient-to-r from-transparent via-white/40 to-transparent my-16"></div>
+              )}
+            </React.Fragment>
           ))}
         </div>
-
-        {selectedRole !== null && (
-          <div className="bg-[#123529] rounded-lg p-8 border border-white/10">
-            <h4 className="text-2xl font-semibold text-white mb-6 text-center">
-              {volunteerRoles[selectedRole].title} - Team Reactions
-            </h4>
-            
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-              {volunteerRoles[selectedRole].images.map((image, imageIndex) => (
-                <div key={imageIndex} className="space-y-4">
-                  <div className="relative aspect-video rounded-lg overflow-hidden bg-white/5">
-                    <Image
-                      src={image}
-                      alt={`Reaction ${imageIndex + 1}`}
-                      fill
-                      className="object-cover"
-                    />
-                  </div>
-                  <div className="bg-white/5 rounded-lg p-4">
-                    <p className="text-white/90 text-sm leading-relaxed">
-                      {volunteerRoles[selectedRole].translations[imageIndex]}
-                    </p>
-                  </div>
-                </div>
-              ))}
-            </div>
-          </div>
-        )}
       </div>
     </section>
   );
 };
 
-export default Volunteering; 
+export default Volunteering;

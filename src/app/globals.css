@@ -244,10 +244,10 @@ body {
   right: -1px;
   bottom: -1px;
   left: -1px;
-  background: linear-gradient(to right, #20e9a6, #238d7b );
+  background: linear-gradient(to left, #093336,#007b61, #4e8d7b );
   border-radius: 0.5rem;
   opacity: 0;
-  filter: blur(0px);
+  filter: blur(8px);
   transition: opacity 300ms;
 }
 

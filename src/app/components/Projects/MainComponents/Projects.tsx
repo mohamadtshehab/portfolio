@@ -5,7 +5,7 @@ import projects from './projectsInfo';
 
 const Projects = () => {
   return (
-    <section id="projects" className="py-20 relative bg-[#123529] ">
+    <section id="projects" className="py-20 relative bg-theme ">
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         <h2 className="text-4xl font-bold text-center text-white mb-12">
           My Projects

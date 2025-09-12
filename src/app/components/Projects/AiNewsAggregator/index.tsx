@@ -68,7 +68,7 @@ const AiNewsAggregator: React.FC = () => {
     <>
       <div className="rounded-lg overflow-hidden relative min-h-[300px]">
   {isLoading ? (
-    <div className="flex justify-center items-center min-h-[300px]"> {/* MODIFIED LINE */}
+    <div className="flex justify-center items-center min-h-[300px]">
       <LoadingButton isLoading={isLoading} />
     </div>
   ) : showVideo ? (

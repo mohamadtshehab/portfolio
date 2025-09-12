@@ -44,7 +44,7 @@ const skillCategories: SkillCategory[] = [
 
 const Skills = () => {
   return (
-    <section id="skills" className="py-20 bg-[#123529]">
+    <section id="skills" className="py-20 bg-theme">
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         <h2 className="text-4xl font-bold text-center text-white mb-12">
           Skills & Expertise
@@ -64,7 +64,7 @@ const Skills = () => {
                   {category.skills.map((skill, skillIndex) => (
                     <li
                       key={skillIndex}
-className="px-3 py-1 text-white text-sm rounded-full border border-white/20 hover:border-white transition-colors duration-300"
+className="skills"
                     >
                       {skill}
                     </li>

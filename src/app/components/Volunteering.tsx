@@ -89,7 +89,7 @@ const volunteerRoles: VolunteerRole[] = [
 const ReactionCard: React.FC<Reaction> = ({ author, original, translation }) => (
   <div className="group relative bg-[#0a1f1a]/50 rounded-lg p-5 border border-white/10 overflow-hidden h-full flex flex-col">
     {/* Subtle gradient glow on hover */}
-    <div className="absolute -inset-px bg-gradient-to-r from-cyan-500 to-purple-500 rounded-lg opacity-0 group-hover:opacity-70 transition-opacity duration-300 blur-md"></div>
+    <div className="colleague-feedback"></div>
     
     <div className="relative z-10 flex flex-col flex-grow">
       <div className="flex items-center gap-3 mb-4">
@@ -148,7 +148,7 @@ const VolunteerCard: React.FC<VolunteerCardProps> = ({
 // --- MAIN VOLUNTEERING COMPONENT (No changes) ---
 const Volunteering = () => {
   return (
-    <section id="volunteering" className="py-20 relative bg-[#123529]">
+    <section id="volunteering" className="py-20 relative bg-theme">
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         <h2 className="text-4xl font-bold text-center text-white mb-16">
           Volunteering Experience
@@ -160,7 +160,7 @@ const Volunteering = () => {
               <VolunteerCard {...role} index={index} />
               
               {index < volunteerRoles.length - 1 && (
-                <div className="w-full h-px bg-gradient-to-r from-transparent via-white/40 to-transparent my-16"></div>
+                <div className="w-full h-px bg-gradient-to-r from-transparent via-black/40 to-transparent my-16"></div>
               )}
             </React.Fragment>
           ))}

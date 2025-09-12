@@ -18,7 +18,7 @@ const ClassDisplay: React.FC<Props> = ({ predictedClass, isAnimated }) => {
       style={{ transformOrigin: 'top' }}
     >
       <h4 className="text-white font-semibold mb-2">Predicted Class:</h4>
-      <div className="bg-black/30 rounded-lg overflow-hidden">
+      <div className="analysis-result">
         <SyntaxHighlighter
           language="plaintext"
           style={atomOneDark}

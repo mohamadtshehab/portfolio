@@ -18,7 +18,7 @@ const PriceDisplay: React.FC<Props> = ({ predictedPrice, isAnimated }) => {
       style={{ transformOrigin: 'top' }}
     >
       <h4 className="text-white font-semibold mb-2">Predicted Price:</h4>
-      <div className="bg-black/30 rounded-lg overflow-hidden">
+      <div className="analysis-result">
         <SyntaxHighlighter
           language="plaintext"
           style={atomOneDark}

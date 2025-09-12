@@ -6,7 +6,7 @@ const Hero = () => {
     <section
       className="min-h-screen flex items-center justify-center text-white py-20"
       style={{
-        backgroundImage: 'linear-gradient(to bottom, black, #123529)',
+        backgroundImage: 'linear-gradient(to bottom, #0A1A1A, #093336)',
       }}
     >
       <div className="flex flex-row items-center justify-center">
@@ -39,7 +39,7 @@ const Hero = () => {
               href="https://github.com/mohamadtshehab"
               target="_blank"
               rel="noopener noreferrer"
-              className="text-3xl hover:text-custom-green transition-colors"
+              className="text-4xl external-link"
             >
               <FaGithub />
             </a>
@@ -47,7 +47,7 @@ const Hero = () => {
               href="https://www.linkedin.com/in/mohamad-shehab-493121279"
               target="_blank"
               rel="noopener noreferrer"
-              className="text-3xl transition-colors"
+              className="text-4xl external-link"
             >
               <FaLinkedin />
             </a>

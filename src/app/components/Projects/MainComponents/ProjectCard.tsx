@@ -65,7 +65,7 @@ const ProjectCard = ({
                 href={telegramUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-white hover:text-white/10 transition-colors mr-2"
+                className="external-link"
                 title="View telegram channel"
               >
                 <FaTelegram className="text-xl" />
@@ -76,7 +76,7 @@ const ProjectCard = ({
                 href={githubUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-white hover:text-white/10 transition-colors mr-2"
+                className="external-link"
                 title="View GitHub repository"
               >
                 <FaGithub className="text-xl" />
@@ -87,7 +87,7 @@ const ProjectCard = ({
                 href={docUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-white hover:text-white/10 transition-colors mr-2"
+                className="external-link"
                 title="View project documentation"
               >
                 <FaFileAlt className="text-xl" />
@@ -98,7 +98,7 @@ const ProjectCard = ({
                 href={colabUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-white hover:text-white/10 transition-colors mr-2"
+                className="external-link"
                 title="View code on Google Colab"
               >
                 <SiGooglecolab className="text-xl" />
@@ -116,7 +116,7 @@ const ProjectCard = ({
                 {technologies.map((tech, i) => (
                   <span
                     key={i}
-                    className="px-3 py-1 text-white text-sm rounded-full border border-white/20 hover:border-white transition-colors duration-300"
+                    className="skills"
                   >
                     {tech}
                   </span>
@@ -127,7 +127,7 @@ const ProjectCard = ({
             <div className="mt-8 flex justify-center">
               <button
                 onClick={handleTryClick}
-                className="hover:bg-white/10 hover:scale-105 active:scale-95 hover:shadow-lg text-white px-8 py-4 rounded-xl flex items-center gap-3 transition-all duration-200 border border-white border-opacity-30"
+                className="custom-button"
               >{interactive ? 
               <>
               <FaPlay className="text-xl" />

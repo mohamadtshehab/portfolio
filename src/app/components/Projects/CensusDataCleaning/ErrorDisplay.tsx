@@ -29,7 +29,7 @@ const ErrorDisplay: React.FC<Props> = ({ errors, isAnimated }) => {
       style={{ transformOrigin: 'top' }}
     >
       <h4 className="text-white font-semibold mb-2">Validation Errors:</h4>
-      <div className="bg-black/30 rounded-lg overflow-hidden">
+      <div className="analysis-result">
         <SyntaxHighlighter
           language="json"
           style={atomOneDark}

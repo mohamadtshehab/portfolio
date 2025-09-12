@@ -8,7 +8,7 @@ interface NotificationProps {
 const Notification = ({ onClick, onClose }: NotificationProps) => (
     <div className="fixed bottom-6 right-6 z-50 max-w-sm w-full animate-slideUp">
       <div
-        className="bg-[#123529] rounded-md shadow-xl overflow-hidden cursor-pointer transform hover:translate-y-[-2px] transition-all border border-white/10 relative"
+        className="bg-theme rounded-md shadow-xl overflow-hidden cursor-pointer transform hover:translate-y-[-2px] transition-all border border-white/10 relative"
         onClick={onClick}
       >
         <div className="p-4">

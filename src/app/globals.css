@@ -244,7 +244,7 @@ body {
   right: -1px;
   bottom: -1px;
   left: -1px;
-  background: linear-gradient(to left, #093336,#007b61, #4e8d7b );
+  background: linear-gradient(to left, #814362, rgb(131, 130, 130));
   border-radius: 0.5rem;
   opacity: 0;
   filter: blur(8px);

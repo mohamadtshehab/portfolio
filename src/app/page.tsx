@@ -10,9 +10,9 @@ export default function Home() {
   return (
     <main className="min-h-screen bg-black">
       <Hero />
+      <Skills />
       <Projects />
       <Certificates />
-      <Skills />
       <Volunteering />
       <Contact />
     </main>

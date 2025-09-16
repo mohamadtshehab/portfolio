@@ -59,7 +59,7 @@ const volunteerRoles: VolunteerRole[] = [
         translation: "@MoeChehab You really need to make a new episode soon 😂💙"
       },
       {
-        author: 'Moe, Host',
+        author: 'Mayassah, Listener',
         original: 'كتيييير خارقة الحلقة 🔥🔥🔥 يعطيكم العافية ❤️❤️❤️',
         translation: `That episode was so good 🔥🔥🔥 God bless you ❤️❤️❤️`
       },
@@ -71,14 +71,9 @@ const volunteerRoles: VolunteerRole[] = [
     icon: <FaShareAlt className="text-4xl" />,
     reactions: [
        {
-        author: 'Community Member',
-        original: 'المحتوى الذي تشاركونه رائع ومفيد جداً. شكراً لجهودكم في إدارة الحساب!',
-        translation: 'Community Feedback: "The content you share is fantastic and very useful. Thank you for your efforts in managing the account!"'
-      },
-      {
-        author: 'Collaborator',
-        original: 'كان العمل معكم على حملة التواصل الاجتماعي تجربة سلسة وناجحة. فريقكم منظم ومبدع.',
-        translation: 'Collaborator Feedback: "Working with you on the social media campaign was a smooth and successful experience. Your team is organized and creative."'
+        author: 'Lora, Chief Social Media Manager',
+        original: 'كتير لطيف البوست يعطيك العافية يا رب',
+        translation: 'The post is very nice. May God give you strength.'
       },
     ]
   },

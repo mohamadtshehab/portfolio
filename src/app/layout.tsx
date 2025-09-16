@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Script from "next/script";
 import "./globals.css";
+import Header from './components/Header';
 
 export const metadata: Metadata = {
   title: "Mohamad Shehab - Portfolio",
@@ -16,6 +17,7 @@ export default function RootLayout({
   return (
     <html lang="en" className="scroll-smooth">
       <body className={`antialiased`}>
+        <Header />
         {children}
         <Script
           src="https://ajax.googleapis.com/ajax/libs/model-viewer/3.3.0/model-viewer.min.js"

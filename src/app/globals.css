@@ -251,6 +251,17 @@ body {
   transition: opacity 300ms;
 }
 
+.colleague-feedback-alt {
+  background: linear-gradient(to right, #4a90e2, #764ba2); /* Second Gradient */
+}
 .group:hover .colleague-feedback {
   opacity: 0.7;
+}
+
+.nav-link {
+  transition: color 300ms ease-in-out;
+}
+
+.nav-link:hover {
+  color: var(--color-theme-200);
 }

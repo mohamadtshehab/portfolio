@@ -55,7 +55,7 @@ const Contact = () => {
                 href="https://github.com/mohamadtshehab"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-3xl text-gray-300 transition-colors"
+                className="text-3xl external-link"
               >
                 <FaGithub />
               </a>
@@ -63,7 +63,7 @@ const Contact = () => {
                 href="https://www.linkedin.com/in/mohamad-shehab-493121279"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-3xl text-gray-300 hover:text-white transition-colors"
+                className="text-3xl external-link"
               >
                 <FaLinkedin />
               </a>

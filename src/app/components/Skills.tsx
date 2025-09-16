@@ -2,6 +2,7 @@ import { FaPython, FaRobot, FaCogs, FaUsers } from 'react-icons/fa';
 import { CgWebsite } from 'react-icons/cg';
 import { BiData } from 'react-icons/bi';
 import React, { ReactNode } from 'react';
+import { FaGlobe } from "react-icons/fa6";
 
 interface SkillCategory {
   name: string;
@@ -10,35 +11,35 @@ interface SkillCategory {
 }
 
 const skillCategories: SkillCategory[] = [
-  { 
-    name: 'Programming', 
-    icon: <FaPython className="text-4xl" />, 
-    skills: ['Python', 'Java', 'SQL', 'C# (Unity)', 'Git', 'Shaders']
+  {
+    name: 'Agents & AI',
+    icon: <FaRobot className="text-4xl" />,
+    skills: ['LangGraph', 'LangChain', 'LangSmith', 'LLMs', 'TensorFlow', 'Keras', 'PyTorch', 'Scikit-Learn', 'Prompt Engineering']
   },
-  { 
-    name: 'Web & Backend Development', 
-    icon: <CgWebsite className="text-4xl" />, 
-    skills: ['Django', 'Flask', 'Laravel', 'REST APIs'] 
+  {
+    name: 'Web & Backend Development',
+    icon: <CgWebsite className="text-4xl" />,
+    skills: ['Django', 'Flask', 'Laravel', 'REST APIs', 'MySQL', 'Asynchronous Programming', 'WebSocket APIs', 'Celery', 'Redis']
   },
-  { 
-    name: 'Machine Learning & AI', 
-    icon: <FaRobot className="text-4xl" />, 
-    skills: ['LangChain', 'LLMs', 'TensorFlow', 'PyTorch', 'Scikit-Learn', 'Prompt Engineering'] 
+  {
+    name: 'Data Science',
+    icon: <BiData className="text-4xl" />,
+    skills: ['Pandas', 'NumPy', 'Matplotlib', 'Seaborn', 'Power BI']
   },
-  { 
-    name: 'Data Science', 
-    icon: <BiData className="text-4xl" />, 
-    skills: ['Pandas', 'NumPy', 'Matplotlib', 'Seaborn', 'Power BI'] 
+  {
+    name: 'Deployment & Automation',
+    icon: <FaCogs className="text-4xl" />,
+    skills: ['Docker', 'HuggingFace', 'Microsoft Azure', 'n8n', 'Google Cloud']
   },
-  { 
-    name: 'Automation & Integration', 
-    icon: <FaCogs className="text-4xl" />, 
-    skills: ['n8n', 'RSS/API Integration', 'ETL Workflows', 'Cloud Automation'] 
+  {
+    name: 'Programming',
+    icon: <FaPython className="text-4xl" />,
+    skills: ['Python', 'Java', 'SQL', 'Git']
   },
-  { 
-    name: 'Soft Skills', 
-    icon: <FaUsers className="text-4xl" />, 
-    skills: ['Leadership', 'Project Management', 'Research', 'Remote Teamwork', 'Consistent Learning'] 
+  {
+    name: 'Soft Skills',
+    icon: <FaUsers className="text-4xl" />,
+    skills: ['Leadership', 'Project Management', 'Research', 'Teamwork', 'Consistent Learning', 'Arabic (Native)', 'English (Advanced)']
   },
 ];
 

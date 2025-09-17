@@ -62,7 +62,7 @@ export default function Header() {
       <div
         className="container mx-auto mt-4 max-w-[450px] rounded-full px-4 py-2 flex items-center justify-center shadow-lg"
         style={{
-          backgroundColor: 'rgba(9, 51, 54, 0.7)', // Your custom theme color with opacity
+          backgroundColor: 'rgba(9, 51, 54, 0.8)', // Your custom theme color with opacity
           backdropFilter: 'blur(10px)',
           WebkitBackdropFilter: 'blur(10px)', // For Safari support
         }}

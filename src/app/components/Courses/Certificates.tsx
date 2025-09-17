@@ -76,7 +76,7 @@ const Certificates = () => {
           >
             <motion.div
               layoutId={`card-${selectedCert.title}`}
-              className="max-h-[90vh] w-full max-w-3xl overflow-y-auto rounded-lg bg-white/10 shadow-2xl dark:bg-gray-800 custom-scrollbar"
+              className="max-h-[90vh] w-full max-w-3xl overflow-y-auto rounded-lg bg-white/10 shadow-2xl custom-scrollbar"
               onClick={e => e.stopPropagation()}
               transition={{ duration: 0.5, ease: 'easeOut' }}
             >

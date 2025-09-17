@@ -1,8 +1,14 @@
 'use client';
 import { FaMicrophone, FaShareAlt } from 'react-icons/fa';
 import { BiBookOpen } from 'react-icons/bi';
-import React from 'react';
-import Image from 'next/image';
+import React, { useEffect, useState } from 'react';
+// --- HELPER FUNCTION ---
+const getRandomGradientClass = () => {
+  const gradients = ['colleague-feedback', 'colleague-feedback-alt'];
+  return gradients[Math.floor(Math.random() * gradients.length)];
+};
+
+// ... (Your data and other components remain the same)
 
 // --- DATA STRUCTURES (No changes) ---
 interface Reaction {
@@ -80,33 +86,44 @@ const volunteerRoles: VolunteerRole[] = [
 ];
 
 
-// --- REACTION CARD SUB-COMPONENT (No changes) ---
-const ReactionCard: React.FC<Reaction> = ({ author, original, translation }) => (
-  <div className="group relative bg-[#0a1f1a]/50 rounded-lg p-5 border border-white/10 overflow-hidden h-full flex flex-col">
-    {/* Subtle gradient glow on hover */}
-    <div className="colleague-feedback"></div>
-    
-    <div className="relative z-10 flex flex-col flex-grow">
-      <div className="flex items-center gap-3 mb-4">
-        <h5 className="font-bold text-white">{author}</h5>
-      </div>
-      
-      <div className="flex-grow space-y-4">
-        <p dir="rtl" className="text-white/90 text-right leading-relaxed" style={{ fontFamily: "'Noto Sans Arabic', sans-serif" }}>
-          {original}
-        </p>
-      </div>
+const ReactionCard: React.FC<Reaction> = ({ author, original, translation }) => {
+  // 1. Initialize state with a default class.
+  const [gradientClass, setGradientClass] = useState('colleague-feedback');
 
-      <div className="border-t border-white/10 pt-4 mt-4">
-        <p className="text-white/70 text-sm leading-relaxed italic">
-          "{translation}"
-        </p>
+  // 2. This function will be called every time the mouse enters the card.
+  const handleMouseEnter = () => {
+    setGradientClass(getRandomGradientClass());
+  };
+
+  return (
+    // 3. Attach the onMouseEnter event to the main container.
+    <div
+      className="group relative bg-[#0a1f1a]/50 rounded-lg p-5 border border-white/10 overflow-hidden h-full flex flex-col"
+      onMouseEnter={handleMouseEnter}
+    >
+      {/* This div's class will now change on every hover. */}
+      <div className={gradientClass}></div>
+
+      <div className="relative z-10 flex flex-col flex-grow">
+        <div className="flex items-center gap-3 mb-4">
+          <h5 className="font-bold text-white">{author}</h5>
+        </div>
+
+        <div className="flex-grow space-y-4">
+          <p dir="rtl" className="text-white/90 text-right leading-relaxed" style={{ fontFamily: "'Noto Sans Arabic', sans-serif" }}>
+            {original}
+          </p>
+        </div>
+
+        <div className="border-t border-white/10 pt-4 mt-4">
+          <p className="text-white/70 text-sm leading-relaxed italic">
+            "{translation}"
+          </p>
+        </div>
       </div>
     </div>
-  </div>
-);
-
-
+  );
+};
 // --- VOLUNTEER CARD SUB-COMPONENT (MODIFIED) ---
 const VolunteerCard: React.FC<VolunteerCardProps> = ({
   title,

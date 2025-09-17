@@ -13,6 +13,7 @@
   --color-theme: #093336;
   --color-theme-100: #32585b;
   --color-theme-200: #5a8184;
+  --color-theme-300: rgba(255, 255, 255, 0.1);
 
   --gradient-custom: linear-gradient(90deg, hsla(184, 71%, 12%, 1) 0%, hsla(56, 21%, 52%, 1) 100%);
   --gradient-custom-fallback: hsla(184, 71%, 12%, 1);
@@ -237,7 +238,6 @@ body {
   overflow: hidden;
 }
 
-/* Colleague feedback class */
 .colleague-feedback {
   position: absolute;
   top: -1px;
@@ -252,9 +252,24 @@ body {
 }
 
 .colleague-feedback-alt {
-  background: linear-gradient(to right, #4a90e2, #764ba2); /* Second Gradient */
+  position: absolute;
+  top: -1px;
+  right: -1px;
+  bottom: -1px;
+  left: -1px;
+  border-radius: 0.5rem;
+  opacity: 0;
+  filter: blur(8px);
+  transition: opacity 300ms;
+  
+  background: linear-gradient(to left, #093336, #007b61, #4e8d7b);
 }
+
 .group:hover .colleague-feedback {
+  opacity: 0.7;
+}
+
+.group:hover .colleague-feedback-alt {
   opacity: 0.7;
 }
 

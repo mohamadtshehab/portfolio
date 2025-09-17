@@ -9,11 +9,41 @@ const Contact = () => {
     email: '',
     message: '',
   });
+  const [status, setStatus] = useState(''); // For showing submission status
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    // Add your form submission logic here
-    console.log('Form submitted:', formData);
+    setIsSubmitting(true);
+    setStatus(''); // Clear any previous status
+
+    try {
+      const response = await fetch('/api/send', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(formData),
+      });
+
+      const data = await response.json();
+
+      if (response.ok) {
+        setStatus('Thanks for reaching out!');
+        // Clear form fields
+        setFormData({
+          name: '',
+          email: '',
+          message: '',
+        });
+      } else {
+        setStatus(`Email not sent: ${data.error || 'Something went wrong.'}`);
+      }
+    } catch (error) {
+      setStatus('Email not sent: Could not send message.');
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
@@ -48,7 +78,7 @@ const Contact = () => {
               </a>
             </div>
             <div className="text-gray-300">
-              <p>Darayya, Damascus, Syria</p>
+              <p>Damascus, Syria</p>
             </div>
             <div className="flex space-x-4">
               <a
@@ -120,11 +150,23 @@ const Contact = () => {
   <div className="flex justify-center">
     <button
       type="submit"
-      className="hover:bg-white/10 hover:scale-105 active:scale-95 hover:shadow-lg text-white px-8 py-4 rounded-xl transition-all duration-200 border border-white border-opacity-30"
+      disabled={isSubmitting}
+      className="hover:bg-white/10 hover:scale-105 active:scale-95 hover:shadow-lg text-white px-8 py-4 rounded-xl transition-all duration-200 border border-white border-opacity-30 disabled:opacity-50 disabled:cursor-not-allowed"
     >
-      Send Message
+      {isSubmitting ? 'Sending...' : 'Send Message'}
     </button>
   </div>
+  
+  {/* Status Message */}
+  {status && (
+    <div className={`text-center mt-4 p-3 rounded-lg ${
+      status.includes('Error') 
+        ? 'shadow-sm rounded-md bg-red-500/20 text-white border border-red-500/30' 
+        : 'rounded-md bg-white/10 border-gray-700 text-white shadow-sm'
+    }`}>
+      {status}
+    </div>
+  )}
 </form>
         </div>
       </div>

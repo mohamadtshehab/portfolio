@@ -5,7 +5,22 @@ import DiamondPricePrediction from '../DiamondPricePrediction/index';
 import MusicGenreClassification from '../MusicGenreClassification/index';
 import ConsultationApp from '../ConsultationApp/index';
 import Remedya from '../Remedya/index';
+import Maknoon from '../Maknoon/index';
 const projects = [
+    {
+      title: 'Maknoon',
+      description: `Remedya is an all-in-one platform that brings together pharmacy management and e-commerce in one place.
+      For pharmacy owners, it includes a powerful dashboard with detailed analytics, inventory and staff management, and order tracking.
+      For customers, it offers a safe online marketplace with features like a built-in Drug Interaction Checker and personalized Allergy Alerts.
+      The system is powered by a custom e-commerce engine that enforces critical safety and efficiency rules, including 
+      FIFO (First-In, First-Out) sales to reduce waste and strict verification for prescription medications. 
+      The result is a platform that helps pharmacies run more smoothly while giving customers a safer, more reliable experience.`,
+      technologies: ['PHP', 'Laravel', 'MySQL', 'SQL', 'Mellisearch', 'Websockets', ],
+      githubUrl: 'https://github.com/mohamadtshehab/PROJECT-1',
+      docUrl: 'https://drive.google.com/file/d/1h44eCRw7MZmIHlKdecxkiyCyDWjDSbi9/view?usp=sharing',
+      interactiveComponent: <Maknoon />,
+      interactive: true
+    },
     {
       title: 'Remedya',
       description: `Remedya is an all-in-one platform that brings together pharmacy management and e-commerce in one place.

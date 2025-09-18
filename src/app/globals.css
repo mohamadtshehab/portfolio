@@ -18,6 +18,10 @@
   --gradient-custom: linear-gradient(90deg, hsla(184, 71%, 12%, 1) 0%, hsla(56, 21%, 52%, 1) 100%);
   --gradient-custom-fallback: hsla(184, 71%, 12%, 1);
 
+  /* Custom Font Families */
+  --font-family-serif: var(--font-newsreader), serif;
+  --font-family-sans: var(--font-noto-sans), sans-serif;
+
   /* Custom Animations */
   --animate-fadeIn: fadeIn 0.3s ease-out;
   --animate-scaleIn: scaleIn 0.3s ease-out;

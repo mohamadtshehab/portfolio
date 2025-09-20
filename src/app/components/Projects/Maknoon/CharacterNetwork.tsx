@@ -20,7 +20,7 @@ const CharacterNetwork: FC<CharacterNetworkProps> = ({ elements, onClose }) => {
   const layout: LayoutOptions = useMemo(() => ({
     name: 'cose',
     idealEdgeLength: 200,
-    nodeRepulsion: 12000,
+    nodeRepulsion: 66666,
     edgeElasticity: 100,
     gravity: 1,
     numIter: 1000,
@@ -29,7 +29,7 @@ const CharacterNetwork: FC<CharacterNetworkProps> = ({ elements, onClose }) => {
     minTemp: 1.0,
     fit: true,
     padding: 50,
-    randomize: true,
+    randomize: false,
     animate: false,
   }), []);
 
@@ -74,7 +74,7 @@ const CharacterNetwork: FC<CharacterNetworkProps> = ({ elements, onClose }) => {
     {
       selector: 'node',
       style: {
-        'backgroundColor': '#0B1120',
+        'backgroundColor': '#5a8184',
         'label': 'data(label)',
         'color': '#FFFFFF',
         'text-valign': 'center',
@@ -99,13 +99,13 @@ const CharacterNetwork: FC<CharacterNetworkProps> = ({ elements, onClose }) => {
       selector: 'edge',
       style: {
         'width': 3,
-        'lineColor': '#4A5568',
+        'lineColor': 'white',
         'curve-style': 'bezier',
         'label': 'data(label)',
-        'color': '#0B1120',
+        'color': 'white',
         'fontSize': '12px',
         'fontWeight': 'bold',
-        'textBackgroundColor': '#60A5FA',
+        'textBackgroundColor': '#007b61',
         'textBackgroundOpacity': 1,
         'textBackgroundPadding': '4px',
         'textBackgroundShape': 'round-rectangle',
@@ -114,12 +114,12 @@ const CharacterNetwork: FC<CharacterNetworkProps> = ({ elements, onClose }) => {
   ];
 
   return (
-    <div className="fixed inset-0 z-50 bg-[#111827] animate-fadeIn flex flex-col">
+    <div className="fixed inset-0 z-50 bg-theme-100 animate-fadeIn flex flex-col">
        {/* Header with Back Button */}
       <div className="p-8 pb-0">
          <button
           onClick={onClose}
-          className="flex items-center gap-2 px-4 py-2 bg-blue-600 hover:bg-blue-700 rounded-md transition-colors text-white"
+          className="custom-button"
         >
           <ArrowLeft size={20} />
           Back

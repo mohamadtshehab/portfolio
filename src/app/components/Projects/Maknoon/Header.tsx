@@ -4,13 +4,20 @@ import React, { useEffect, useState } from 'react';
 type HeaderProps = {
     onToggleSidebar: () => void;
     hasFinishedReading: boolean;
+    showNote?: boolean;
 };
 
-const Header = ({ onToggleSidebar, hasFinishedReading }: HeaderProps) => {
+const Header = ({ onToggleSidebar, hasFinishedReading, showNote = false }: HeaderProps) => {
     const [showTooltip, setShowTooltip] = useState(false);
     const [tooltipMode, setTooltipMode] = useState<'pre' | 'post'>('pre');
 
     useEffect(() => {
+        // Don't show tooltips if the note is still visible
+        if (showNote) {
+            setShowTooltip(false);
+            return;
+        }
+        
         if (!hasFinishedReading) {
             setTooltipMode('pre');
             setShowTooltip(true);
@@ -20,7 +27,7 @@ const Header = ({ onToggleSidebar, hasFinishedReading }: HeaderProps) => {
             const timeoutId = setTimeout(() => setShowTooltip(false), 4000);
             return () => clearTimeout(timeoutId);
         }
-    }, [hasFinishedReading]);
+    }, [hasFinishedReading, showNote]);
 
     return (
         <header className="flex-shrink-0 flex items-center justify-between whitespace-nowrap border-b border-neutral-200 px-10 py-3">
@@ -38,7 +45,7 @@ const Header = ({ onToggleSidebar, hasFinishedReading }: HeaderProps) => {
                     <div
                         onClick={() => setShowTooltip(false)}
                         // 👇 MODIFIED: Removed vertical centering and aligned to the top of the button's container.
-                        className="absolute left-full top-0 z-10 w-72 rounded-lg bg-neutral-800 text-white text-xs px-4 py-3 shadow-lg cursor-pointer whitespace-normal break-words"
+                        className="absolute left-full top-0 z-10 w-72 rounded-lg bg-theme-100 text-white text-xs px-4 py-3 shadow-lg cursor-pointer whitespace-normal break-words"
                     >
                         {tooltipMode === 'pre' ? (
                             <>
@@ -52,7 +59,7 @@ const Header = ({ onToggleSidebar, hasFinishedReading }: HeaderProps) => {
                             </>
                         )}
                         {/* 👇 MODIFIED: Repositioned arrow from the vertical middle to the top. */}
-                        <div className="absolute top-3.5 -left-1 w-3 h-3 bg-neutral-800 rotate-45" />
+                        <div className="absolute top-3.5 -left-1 w-3 h-3 bg-theme-100 rotate-45" />
                     </div>
                 )}
             </div>

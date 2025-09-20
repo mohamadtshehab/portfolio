@@ -2,19 +2,19 @@ import { ArrowLeft } from '@phosphor-icons/react';
 
 const CharacterProfile = ({ character, onBack, onShowNetwork }) => {
   return (
-    <div className="fixed inset-0 z-50 bg-[#111827] text-white animate-fadeIn flex flex-col">
+    <div className="fixed inset-0 z-50 bg-theme-100 text-white animate-fadeIn flex flex-col">
       <div className="p-8 flex-1 overflow-y-auto">
         <div className="flex justify-between items-start mb-6">
           <button 
             onClick={onBack}
-            className="flex items-center gap-2 px-4 py-2 bg-blue-600 hover:bg-blue-700 rounded-md transition-colors"
+            className="custom-button"
           >
             <ArrowLeft size={20} />
             Back to Novel
           </button>
           <button 
             onClick={() => onShowNetwork(character.id)}
-            className="px-5 py-2.5 bg-green-600 hover:bg-green-700 rounded-md transition-colors"
+            className="custom-button"
           >
             Show Network
           </button>

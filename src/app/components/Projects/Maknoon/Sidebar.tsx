@@ -3,12 +3,20 @@ import { User, ShareNetwork } from '@phosphor-icons/react';
 const Sidebar = ({ isSidebarOpen, profiles, onSelectCharacter, onShowNetwork }) => {
   return (
     <aside
-      className={`flex-shrink-0 bg-neutral-900 text-white transition-all duration-300 ${
+      className={`flex-shrink-0 bg-theme text-white transition-all duration-300 ${
         isSidebarOpen ? 'w-64' : 'w-0 overflow-hidden'
       }`}
     >
       <div className="flex h-full flex-col">
-        <div className="flex items-center justify-between p-4 h-[81px]">
+        <div className="p-4">
+          <button 
+            onClick={onShowNetwork} 
+            className="network-button"
+          >
+            <ShareNetwork size={24} />
+            <span>Character Network</span>
+          </button>
+          <div className="w-full h-px bg-gradient-to-r from-transparent via-white opacity-30 to-transparent my-8"></div>
           <div className="flex items-center gap-3">
             <User size={24} />
             <h3 className="text-md font-bold">Character Profiles</h3>
@@ -20,7 +28,7 @@ const Sidebar = ({ isSidebarOpen, profiles, onSelectCharacter, onShowNetwork }) 
               <li key={profile.id}>
                 <button
                   onClick={() => onSelectCharacter(profile)}
-                  className="w-full flex items-center gap-3 rounded p-2 text-sm text-left font-medium text-neutral-400 transition-colors duration-150 hover:bg-neutral-800 hover:text-white"
+                  className="w-full flex items-center gap-3 rounded p-2 text-sm text-left font-medium text-neutral-400 transition-colors duration-150 hover:bg-white/10 hover:text-white"
                 >
                   <User size={20} />
                   <span>{profile.name}</span>
@@ -28,15 +36,6 @@ const Sidebar = ({ isSidebarOpen, profiles, onSelectCharacter, onShowNetwork }) 
               </li>
             ))}
           </ul>
-        </div>
-        <div className="p-4">
-          <button 
-            onClick={onShowNetwork} 
-            className="w-full flex items-center gap-3 rounded p-2 text-sm font-medium text-neutral-400 transition-colors duration-150 hover:bg-neutral-800 hover:text-white"
-          >
-            <ShareNetwork size={24} />
-            <span>Character Network</span>
-          </button>
         </div>
       </div>
     </aside>

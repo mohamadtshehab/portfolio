@@ -14,7 +14,11 @@ interface ProjectCardProps {
   telegramUrl?: string;
   colabUrl?: string;
   interactive?: boolean;
+  note?: string;
 }
+
+// Global state to track if user has seen the note across all projects
+let globalHasSeenNote = false;
 
 const ProjectCard = ({ 
   title, 
@@ -29,6 +33,7 @@ const ProjectCard = ({
 }: ProjectCardProps) => {
   const [showInteractive, setShowInteractive] = useState(false);
   const [animate, setAnimate] = useState(false);
+  const [showNote, setShowNote] = useState(false);
   const interactiveRef = useRef<HTMLDivElement>(null);
 
   // Animation control for interactive section
@@ -41,6 +46,16 @@ const ProjectCard = ({
   }, [showInteractive]);
 
   const handleTryClick = () => {
+    if (interactive && !globalHasSeenNote) {
+      setShowNote(true);
+    } else {
+      setShowInteractive(true);
+    }
+  };
+
+  const handleNoteAcknowledge = () => {
+    setShowNote(false);
+    globalHasSeenNote = true;
     setShowInteractive(true);
   };
 
@@ -107,7 +122,7 @@ const ProjectCard = ({
           </div>
         </div>
 
-        {!showInteractive ? (
+        {!showInteractive && !showNote ? (
           <>
             <p className="text-white mb-6" dangerouslySetInnerHTML={{ __html: description.replace(/<a /g, `<a class="${styles.link}" `) }} />
             
@@ -142,6 +157,44 @@ const ProjectCard = ({
               </button>
             </div>
           </>
+        ) : showNote ? (
+          <div className="text-center py-8">
+            <div className="bg-white/10 backdrop-blur-sm rounded-lg p-6 max-w-2xl mx-auto border border-white/20">
+              <div className="mb-4">
+                <div className="w-16 h-16 mx-auto mb-4 bg-transparent border-2 border-white/30 rounded-full flex items-center justify-center">
+                  <FaPlay className="text-2xl text-white/80" />
+                </div>
+                <h3 className="text-xl font-semibold text-white mb-3">Interactive Showcase</h3>
+              </div>
+              
+              <div className="text-white/90 text-left space-y-3 mb-6">
+                <p>
+                  This interactive showcase represents just a <span className="text-white font-semibold underline">core part</span> of the complete project experience.
+                </p>
+                <p>
+                  While it demonstrates the main functionality and gives you a hands-on feel for the project&apos;s capabilities, 
+                  it doesn&apos;t capture the full scope, context, and comprehensive features that make up the entire solution. 
+                  This applies to all interactive showcases in this portfolio.
+                </p>
+              </div>
+              
+              <div className="flex gap-3 justify-center">
+                <button
+                  onClick={handleNoteAcknowledge}
+                  className="custom-button"
+                >
+                  <FaPlay className="text-lg" />
+                  <span className="font-semibold">Continue to Showcase</span>
+                </button>
+                <button
+                  onClick={() => setShowNote(false)}
+                  className="custom-button"
+                >
+                  Go Back
+                </button>
+              </div>
+            </div>
+          </div>
         ) : (
           <div
             ref={interactiveRef}

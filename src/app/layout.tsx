@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Script from "next/script";
 import "./globals.css";
 import Header from './components/Header';
+import ParticlesBackground from './components/ParticlesBackground';
 
 export const metadata: Metadata = {
   title: "Mohamad Shehab - Portfolio",
@@ -16,7 +17,10 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" className="scroll-smooth">
-      <body className={`antialiased`}>
+      <body className={`antialiased relative`}>
+        {/* Global Particle Background */}
+        <ParticlesBackground />
+        
         <Header />
         {children}
         <Script

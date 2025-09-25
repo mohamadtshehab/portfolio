@@ -45,6 +45,7 @@ export default function Header() {
   }, []);
 
   const navLinks = [
+    {href: '#about', label: 'About Me'},
     { href: '#skills', label: 'Skills' },
     { href: '#projects', label: 'Projects' },
     { href: '#certificates', label: 'Certificates'},
@@ -60,7 +61,7 @@ export default function Header() {
     >
       {/* The Glassmorphism Capsule Container */}
       <div
-        className="container mx-auto mt-4 max-w-[450px] rounded-full px-4 py-2 flex items-center justify-center shadow-lg"
+        className="container mx-auto mt-4 max-w-[550px] rounded-full px-4 py-2 flex items-center justify-center shadow-lg"
         style={{
           backgroundColor: 'rgba(9, 51, 54, 0.8)', // Your custom theme color with opacity
           backdropFilter: 'blur(10px)',

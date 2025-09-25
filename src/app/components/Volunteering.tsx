@@ -160,7 +160,7 @@ const VolunteerCard: React.FC<VolunteerCardProps> = ({
 // --- MAIN VOLUNTEERING COMPONENT (No changes) ---
 const Volunteering = () => {
   return (
-    <section id="volunteering" className="py-20 relative bg-theme">
+    <section id="volunteering" className="py-20 relative bg-transparent">
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         <h2 className="text-4xl font-bold text-center text-white mb-16">
           Volunteering Experience

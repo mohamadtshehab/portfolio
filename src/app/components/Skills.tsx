@@ -45,7 +45,7 @@ const skillCategories: SkillCategory[] = [
 
 const Skills = () => {
   return (
-    <section id="skills" className="py-20 bg-theme">
+    <section id="skills" className="py-20 bg-transparent">
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         <h2 className="text-4xl font-bold text-center text-white mb-12">
           Skills & Expertise

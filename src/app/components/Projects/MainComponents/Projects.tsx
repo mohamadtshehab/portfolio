@@ -8,7 +8,7 @@ const Projects = () => {
   const [showAllProjects, setShowAllProjects] = useState(false);
 
   return (
-    <section id="projects" className="py-20 relative bg-theme ">
+    <section id="projects" className="py-20 relative bg-transparent">
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         <h2 className="text-4xl font-bold text-center text-white mb-12">
           My Projects
@@ -21,8 +21,6 @@ const Projects = () => {
             <div className="w-full h-px bg-gradient-to-r from-transparent via-white to-transparent opacity-50"></div>
             <div className="relative">
               <ProjectCard {...projects[1]} />
-              {/* Fade overlay */}
-              <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-theme to-transparent pointer-events-none"></div>
             </div>
           </div>
 

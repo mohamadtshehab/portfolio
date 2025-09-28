@@ -36,7 +36,7 @@ const Hero = () => {
             repeat={Infinity}
           />
          <p className="max-w-xl text-lg text-white/70 mb-8">
-  Glad you're here. This portfolio was built with the same attention to detail I apply to my projects. Go ahead, click around, and you might be surprised by what you find.
+  Glad your&apos;e here. This portfolio was built with the same attention to detail I apply to my projects. Go ahead, click around, and you might be surprised by what you find.
 </p>
           {/* CTA and Socials */}
           <div className="flex items-center justify-center md:justify-start gap-4">

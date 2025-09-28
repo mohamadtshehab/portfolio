@@ -9,23 +9,24 @@ import Maknoon from '../Maknoon/index';
 const projects = [
     {
       title: 'Maknoon',
-      description: `Maknoon is a first-of-its-kind multi-agent system that I architected and developed to perform in-depth character 
-      analysis on Arabic novels. The project uses an innovative AI workflow, built with Django and LangGraph, 
-      to overcome the challenges of processing long, complex texts. By progressively cleaning, analyzing, and building character
-      profiles with a flexible JSON-based database, the system effectively extracts and organizes detailed information about
-      character traits, relationships, and key events, demonstrating my expertise in both backend and AI engineering.`,
+      description: `Faced with the challenge of analyzing long, complex Arabic novels without a dedicated tool, I architected and developed
+      Maknoon, a first-of-its-kind multi-agent system, to efficiently extract and organize detailed character data. My action involved
+      designing an innovative AI workflow built with Django and LangGraph, which progressively cleans, analyzes, and builds character
+      profiles. The result is a highly effective system that extracts and organizes detailed
+      information about character traits, relationships, and key events, clearly demonstrating my expertise in both backend and AI engineering.`,
       technologies: ['LangGraph', 'LangSmith', 'Django REST Framework', 'Celery', 'Redis', 'Google Gemini', 'Websockets', 'Cohere'],
       interactiveComponent: <Maknoon />,
       interactive: true
     },
     {
       title: 'Remedya',
-      description: `Remedya is an all-in-one platform that brings together pharmacy management and e-commerce in one place.
-      For pharmacy owners, it includes a powerful dashboard with detailed analytics, inventory and staff management, and order tracking.
-      For customers, it offers a safe online marketplace with features like a built-in Drug Interaction Checker and personalized Allergy Alerts.
-      The system is powered by a custom e-commerce engine that enforces critical safety and efficiency rules, including 
-      FIFO (First-In, First-Out) sales to reduce waste and strict verification for prescription medications. 
-      The result is a platform that helps pharmacies run more smoothly while giving customers a safer, more reliable experience.`,
+      description: `Faced with the challenge of the pharmacy market being fragmented between complex management systems and basic e-commerce
+      sites, I architected and led the development of Remedya, an all-in-one platform that unifies both functions. My action involved
+      implementing a custom e-commerce engine that enforces critical safety and efficiency rules, such as FIFO (First-In, First-Out)
+      sales for waste reduction and strict verification for prescription medications, alongside building two distinct user experiences:
+      a robust management dashboard with detailed analytics, inventory, and staff management for owners, and a safe customer marketplace
+      with features like a built-in Drug Interaction Checker and Allergy Alerts. The result is a single platform that makes pharmacies
+      run more smoothly and provides customers with a safer, more reliable online experience.`,
       technologies: ['PHP', 'Laravel', 'MySQL', 'SQL', 'Mellisearch', 'Websockets', ],
       githubUrl: 'https://github.com/mohamadtshehab/PROJECT-1',
       docUrl: 'https://drive.google.com/file/d/1h44eCRw7MZmIHlKdecxkiyCyDWjDSbi9/view?usp=sharing',
@@ -35,10 +36,11 @@ const projects = [
     {
       
       title: 'Population Census Data Cleaning',
-      description: `As a volunteer data analyst, I undertook the critical task of cleaning and validating unstructured Arabic census data. 
-      This involved the development of over 150 validation rules spanning 66 distinct fields. To streamline the error detection process, I implemented 
-      automation using Pandas, which facilitated the output of structured JSON reports. Through this rigorous analysis, I successfully identified more
-      than 300 data quality issues present in 90% of the 203 census entries.`,
+      description: `Facing the critical challenge of working with unstructured Arabic census data that contained numerous errors, I volunteered
+      as a data analyst with the task of cleaning and validating this data to ensure its integrity. My action involved developing over
+      150 granular validation rules across 66 distinct fields and implementing automation using the Pandas library to streamline error
+      detection and output structured JSON reports. This rigorous process resulted in the successful identification of more than 300 data
+      quality issues present in 90% of the 203 census entries, significantly improving the reliability of the dataset.`,
       technologies: ['Python', 'Pandas', 'Draw.io', 'Excel', 'JSON'],
       docUrl: 'https://drive.google.com/file/d/1OnfAxi3yKwZiNC60K3a0dzXTlBPtmk0H/view?usp=sharing',
       interactiveComponent: <CensusDataCleaning />,
@@ -46,8 +48,15 @@ const projects = [
     },
     {
       title: 'Ath.ai - AI Furniture Visualizer',
-      description: `Developed an innovative AI-powered 3D furniture visualizer with diffusion models, transformers, Django for the backend, and Flask for
-      the model deployment.`,
+      description: `Facing the significant 
+
+challenge of a market where users had to choose between complex 3D modeling software (like Blender) or costly, non-custom advice from interior designers, my task was to architect and develop Ath.ai , an 
+
+AI-powered web application to enable swift, customized in-room furniture visualization. My 
+
+action involved building a system on a Django backend with a React/ThreeJS frontend that utilizes state-of-the-art generative capabilities, including NLP, transformer architectures, diffusion models (Zero123++), and Large Reconstruction Models (LRMs), implementing two pipelines (2D-to-3D and Text-to-3D) for model generation. The 
+
+result is a highly efficient platform that assists users in generating high-quality 3D furniture models from just a single image or text description, successfully overcoming the limitations of previous applications.`,
       technologies: ['Transformers', 'Diffusion Models', 'Django', 'Flask'],
       githubUrl: 'https://github.com/mohamadshehab/athai',
       docUrl: 'https://drive.google.com/file/d/1apabdA9Z-bb4SeAoyxPZJIvSB7ChQDfX/view?usp=sharing',
@@ -56,10 +65,12 @@ const projects = [
     },
     {
       title: 'Automated AI News Aggregator & Digest',
-      description: `Leveraging an automated n8n workflow, I developed a system to collect, filter, and summarize daily AI news, integrating RSS feeds and
-      utilizing the Google Gemini API to provide summaries in both English and Arabic, which are then delivered to subscribers via the Telegram API on my
-      channel: <a href="https://t.me/shehab_newsletter" target="_blank" rel="noopener noreferrer" className="text-[#ffc64a] hover:underline">Starfall AI</a>
-      (Do not forget to subscribe 😉).`,
+      description: `Facing the constant challenge of staying updated on the rapidly moving field of AI news, I decided to
+      develop an automated system that could efficiently collect, filter, and provide multi-lingual summaries to subscribers.
+      My action involved architecting an n8n workflow that automatically ingested various RSS feeds, filtered the content, and then
+      leveraged the Google Gemini API to generate high-quality news summaries in both English and Arabic. The resulting summaries are
+      then seamlessly delivered directly to subscribers via the Telegram API on the Starfall AI channel, providing a reliable, dual-language
+      daily news digest with minimal manual effort. (Don't forget to subscribe to the channel from URL above. 😉)`,
       technologies: ['n8n', 'RSS', 'Google Gemini API', 'Telegram API', 'JavaScript'],
       docUrl: 'https://drive.google.com/file/d/1fxyomUNtPIOY1wKHO9KH_bBywZaFz8Tk/view?usp=sharing',
       interactiveComponent: <AiNewsAggregator />,

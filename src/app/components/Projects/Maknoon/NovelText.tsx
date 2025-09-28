@@ -50,7 +50,7 @@ const NovelText = ({ scrollRef }) => {
               Her approval was the project's true birth certificate. From then on, her office became a regular stop where they shared updates and sought her advice and expertise.
             </p>
             <p className="text-lg leading-relaxed py-2 text-justify">
-              They didn't stop there. They also presented the idea to Dr. Ammar Al-Nahhas, who listened carefully and strongly encouraged them, reinforcing their confidence that they were on the right track.
+              They did&apos; stop there. They also presented the idea to Dr. Ammar Al-Nahhas, who listened carefully and strongly encouraged them, reinforcing their confidence that they were on the right track.
             </p>
             <p className="text-lg leading-relaxed py-2 text-justify">
               Feeling the need for technical engineering supervision, they approached Engineer Omar Hadeed, who agreed to guide them on the practical details throughout the journey. Thus, their support network was complete, with strong allies inside the college walls.
@@ -63,20 +63,20 @@ const NovelText = ({ scrollRef }) => {
               As work began, masks started to fall. "X," who was supposed to be the team's technical pillar, began building walls around his work. He acted as if the project's frontend was his private kingdom, off-limits to others' input. His arrogance and superiority clashed repeatedly with the team spirit Mohamad tried to foster.
             </p>
             <p className="text-lg leading-relaxed py-2 text-justify">
-              The conflict peaked during another course's project, when a technical discussion turned personal. "X" couldn't handle criticism of his work. After a heated argument with Mohamad, and harsh words directed at Rama, he quit in dramatic fashion—leaving behind a void and confusion.
+              The conflict peaked during another course's project, when a technical discussion turned personal. &quot;X&quot; couldn&apos;t handle criticism of his work. After a heated argument with Mohamad, and harsh words directed at Rama, he quit in dramatic fashion—leaving behind a void and confusion.
             </p>
             <p className="text-lg leading-relaxed py-2 text-justify">
-              His departure was painful, but it felt like necessary surgery to remove a tumor threatening the team's body as a whole.
+              His departure was painful, but it felt like necessary surgery to remove a tumor threatening the team&apos;s body as a whole.
             </p>
           </div>
 
           <div className="mb-8 font-serif">
             <h3 className="text-xl font-semibold mb-3 text-center">Chapter Five: A Blow of Fate… and Bitter Disappointment</h3>
             <p className="text-lg leading-relaxed py-2 text-justify">
-              The now four-member team had barely recovered from the first shock when an even harsher blow struck. The news came like thunder: Aamer Al-Sumar, Mohamad's first ally, had failed his fourth year. By law, he could no longer continue the project.
+              The now four-member team had barely recovered from the first shock when an even harsher blow struck. The news came like thunder: Aamer Al-Sumar, Mohamad&apos;s first ally, had failed his fourth year. By law, he could no longer continue the project.
             </p>
             <p className="text-lg leading-relaxed py-2 text-justify">
-              Aamer promised to stay and support the team to the end, insisting it was his mistake alone and that he wouldn't abandon them. But his promises evaporated with time. He became a ghost, appearing and disappearing, traveling for months without warning, leaving his tasks unfinished.
+              Aamer promised to stay and support the team to the end, insisting it was his mistake alone and that he wouldn&apos;t abandon them. But his promises evaporated with time. He became a ghost, appearing and disappearing, traveling for months without warning, leaving his tasks unfinished.
             </p>
             <p className="text-lg leading-relaxed py-2 text-justify">
               Mohamad tried everything, even offering him money to finish his part, but to no avail. The disappointment was especially bitter because it came from a friend. Finally, in a moment of despair and resolve, Mohamad confronted him and formally ended his role in the project.
@@ -92,7 +92,7 @@ const NovelText = ({ scrollRef }) => {
               Mohamad had to shoulder the entire backend, along with developing the most complex part of the AI system. The days were brutal, made worse when Rama and Tamam were forced to stop working for weeks due to events in their city, leaving Mohamad completely alone with the massive project.
             </p>
             <p className="text-lg leading-relaxed py-2 text-justify">
-              But they didn't give up. They came back stronger and united. They worked day and night, tied the scattered threads, and rebuilt what had collapsed. Rama returned to frontend with determination, while Mohamad and Tamam refined every detail of the system and the report.
+              But they didn&apos;t give up. They came back stronger and united. They worked day and night, tied the scattered threads, and rebuilt what had collapsed. Rama returned to frontend with determination, while Mohamad and Tamam refined every detail of the system and the report.
             </p>
             <p className="text-lg leading-relaxed py-2 text-justify">
               Today, these three stand at the finish line. They are no longer just students about to graduate, but warriors worn down by battle who nevertheless were not defeated. Their project is no longer just a smart application, but a testament to their resilience—a story of a team that nearly sank, but survived thanks to the will of three Avengers who refused to abandon the dream.

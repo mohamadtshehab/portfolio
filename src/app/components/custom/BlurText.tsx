@@ -44,8 +44,8 @@ const BlurText: React.FC<BlurTextProps> = ({
   animationFrom,
   animationTo,
   easing = (t) => t,
-  onAnimationComplete,
   stepDuration = 0.35,
+  onAnimationComplete,
 }) => {
   const elements = animateBy === "words" ? text.split(" ") : text.split("");
   const [inView, setInView] = useState(false);
@@ -104,8 +104,8 @@ const BlurText: React.FC<BlurTextProps> = ({
           duration: totalDuration,
           times,
           delay: (index * delay) / 1000,
+          ease: easing, // Correct way to assign the easing function
         };
-        (spanTransition as any).ease = easing;
 
         return (
           <motion.span

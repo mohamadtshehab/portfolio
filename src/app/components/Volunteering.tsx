@@ -1,7 +1,7 @@
 'use client';
 import { FaMicrophone, FaShareAlt } from 'react-icons/fa';
 import { BiBookOpen } from 'react-icons/bi';
-import React, { useEffect, useState } from 'react';
+import React, {useState } from 'react';
 // --- HELPER FUNCTION ---
 const getRandomGradientClass = () => {
   const gradients = ['colleague-feedback', 'colleague-feedback-alt'];

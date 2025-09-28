@@ -1,3 +1,4 @@
+import Image from "next/image";
 import { FaTimes } from "react-icons/fa";
 
 interface NotificationProps {
@@ -14,13 +15,15 @@ const Notification = ({ onClick, onClose }: NotificationProps) => (
         <div className="p-4">
           <div className="flex gap-3">
             <div className="h-17 w-17 overflow-hidden rounded-full flex items-center justify-center">
-              <img
+              <Image
                 src="/starfall-ai.png"
                 alt="Starfall AI"
+                width={68} // Set an appropriate width
+                height={68} // Set an appropriate height
                 className="w-full h-full object-cover"
               />
             </div>
-  
+          
             <div className="flex-1">
               <div className="flex justify-between">
                 <span className="font-semibold text-white">Starfall AI</span>
@@ -29,7 +32,7 @@ const Notification = ({ onClick, onClose }: NotificationProps) => (
             </div>
           </div>
         </div>
-  
+      
         <div
           onClick={onClose}
           className="absolute top-2 right-2 cursor-pointer p-1 hover:bg-black rounded-full"

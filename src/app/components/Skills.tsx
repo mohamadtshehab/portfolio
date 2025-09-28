@@ -2,8 +2,6 @@ import { FaPython, FaRobot, FaCogs, FaUsers } from 'react-icons/fa';
 import { CgWebsite } from 'react-icons/cg';
 import { BiData } from 'react-icons/bi';
 import React, { ReactNode } from 'react';
-import { FaGlobe } from "react-icons/fa6";
-
 interface SkillCategory {
   name: string;
   icon: ReactNode;

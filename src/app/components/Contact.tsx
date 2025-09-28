@@ -39,8 +39,9 @@ const Contact = () => {
       } else {
         setStatus(`Email not sent: ${data.error || 'Something went wrong.'}`);
       }
-    } catch (error) {
-      setStatus('Email not sent: Could not send message.');
+    } catch (error: any) {
+      // Use the error message for more specific feedback
+      setStatus(`Email not sent: Could not send message. ${error.message}`);
     } finally {
       setIsSubmitting(false);
     }
@@ -98,78 +99,78 @@ const Contact = () => {
             </div>
           </div>
           <form onSubmit={handleSubmit} className="flex flex-col space-y-6">
-  {/* Input fields */}
-  <div>
-    <label htmlFor="name" className="block text-sm font-medium text-gray-300">
-      Name
-    </label>
-    <input
-      type="text"
-      id="name"
-      name="name"
-      value={formData.name}
-      onChange={handleChange}
-      className="pl-1 mt-1 block w-full rounded-md bg-white/10 border-white text-white shadow-sm focus:border-white"
-      required
-    />
-  </div>
+            {/* Input fields */}
+            <div>
+              <label htmlFor="name" className="block text-sm font-medium text-gray-300">
+                Name
+              </label>
+              <input
+                type="text"
+                id="name"
+                name="name"
+                value={formData.name}
+                onChange={handleChange}
+                className="pl-1 mt-1 block w-full rounded-md bg-white/10 border-white text-white shadow-sm focus:border-white"
+                required
+              />
+            </div>
 
-  <div>
-    <label htmlFor="email" className="block text-sm font-medium text-white">
-      Email
-    </label>
-    <input
-      type="email"
-      id="email"
-      name="email"
-      value={formData.email}
-      onChange={handleChange}
-      className="pl-1 mt-1 block w-full rounded-md bg-white/10 border-white text-white shadow-sm focus:border-white"
-      required
-    />
-  </div>
+            <div>
+              <label htmlFor="email" className="block text-sm font-medium text-white">
+                Email
+              </label>
+              <input
+                type="email"
+                id="email"
+                name="email"
+                value={formData.email}
+                onChange={handleChange}
+                className="pl-1 mt-1 block w-full rounded-md bg-white/10 border-white text-white shadow-sm focus:border-white"
+                required
+              />
+            </div>
 
-  <div>
-    <label htmlFor="message" className="block text-sm font-medium text-white">
-      Message
-    </label>
-    <textarea
-      id="message"
-      name="message"
-      value={formData.message}
-      onChange={handleChange}
-      rows={4}
-      className="pl-1 mt-1 block w-full rounded-md bg-white/10 border-gray-700 text-white shadow-sm"
-      required
-    />
-  </div>
+            <div>
+              <label htmlFor="message" className="block text-sm font-medium text-white">
+                Message
+              </label>
+              <textarea
+                id="message"
+                name="message"
+                value={formData.message}
+                onChange={handleChange}
+                rows={4}
+                className="pl-1 mt-1 block w-full rounded-md bg-white/10 border-gray-700 text-white shadow-sm"
+                required
+              />
+            </div>
 
-  {/* Centering Button */}
-  <div className="flex justify-center">
-    <button
-      type="submit"
-      disabled={isSubmitting}
-      className="hover:bg-white/10 hover:scale-105 active:scale-95 hover:shadow-lg text-white px-8 py-4 rounded-xl transition-all duration-200 border border-white border-opacity-30 disabled:opacity-50 disabled:cursor-not-allowed"
-    >
-      {isSubmitting ? 'Sending...' : 'Send Message'}
-    </button>
-  </div>
-  
-  {/* Status Message */}
-  {status && (
-    <div className={`text-center mt-4 p-3 rounded-lg ${
-      status.includes('Error') 
-        ? 'shadow-sm rounded-md bg-red-500/20 text-white border border-red-500/30' 
-        : 'rounded-md bg-white/10 border-gray-700 text-white shadow-sm'
-    }`}>
-      {status}
-    </div>
-  )}
-</form>
+            {/* Centering Button */}
+            <div className="flex justify-center">
+              <button
+                type="submit"
+                disabled={isSubmitting}
+                className="hover:bg-white/10 hover:scale-105 active:scale-95 hover:shadow-lg text-white px-8 py-4 rounded-xl transition-all duration-200 border border-white border-opacity-30 disabled:opacity-50 disabled:cursor-not-allowed"
+              >
+                {isSubmitting ? 'Sending...' : 'Send Message'}
+              </button>
+            </div>
+          
+            {/* Status Message */}
+            {status && (
+              <div className={`text-center mt-4 p-3 rounded-lg ${
+                status.includes('Error')
+                  ? 'shadow-sm rounded-md bg-red-500/20 text-white border border-red-500/30'
+                  : 'rounded-md bg-white/10 border-gray-700 text-white shadow-sm'
+              }`}>
+                {status}
+              </div>
+            )}
+          </form>
         </div>
       </div>
     </section>
   );
 };
 
-export default Contact; 
+export default Contact;

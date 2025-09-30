@@ -39,14 +39,23 @@ const Contact = () => {
       } else {
         setStatus(`Email not sent: ${data.error || 'Something went wrong.'}`);
       }
-    } catch (error: any) {
-      // Use the error message for more specific feedback
-      setStatus(`Email not sent: Could not send message. ${error.message}`);
+    } catch (error: unknown) {
+      let errorMessage = 'An unknown error occurred.';
+      
+      if (error instanceof Error) {
+        errorMessage = error.message;
+      } else if (typeof error === 'string') {
+        // Handle cases where a string might be thrown
+        errorMessage = error;
+      }
+    
+      setStatus(`Email not sent: Could not send message. ${errorMessage}`);
     } finally {
       setIsSubmitting(false);
     }
   };
 
+  
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const { name, value } = e.target;
     setFormData(prev => ({

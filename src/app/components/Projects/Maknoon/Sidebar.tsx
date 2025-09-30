@@ -1,6 +1,14 @@
-import { User, ShareNetwork } from '@phosphor-icons/react';
+import { User, ShareNetworkIcon } from '@phosphor-icons/react';
+import { CharacterData } from './CharacterProfile'; // Assuming path to CharacterProfile/CharacterData
 
-const Sidebar = ({ isSidebarOpen, profiles, onSelectCharacter, onShowNetwork }) => {
+interface SidebarProps {
+  isSidebarOpen: boolean;
+  profiles: CharacterData[]; // Use the defined CharacterData type
+  onSelectCharacter: (profile: CharacterData) => void;
+  onShowNetwork: () => void;
+}
+
+const Sidebar = ({ isSidebarOpen, profiles, onSelectCharacter, onShowNetwork }: SidebarProps) => {
   return (
     <aside
       className={`flex-shrink-0 bg-theme text-white transition-all duration-300 ${
@@ -13,7 +21,7 @@ const Sidebar = ({ isSidebarOpen, profiles, onSelectCharacter, onShowNetwork }) 
             onClick={onShowNetwork} 
             className="network-button"
           >
-            <ShareNetwork size={24} />
+            <ShareNetworkIcon size={24} />
             <span>Character Network</span>
           </button>
           <div className="w-full h-px bg-gradient-to-r from-transparent via-white opacity-30 to-transparent my-8"></div>

@@ -1,6 +1,29 @@
 import { ArrowLeft } from '@phosphor-icons/react';
+// Define the structure of the 'details' object (the values in the inner dictionary)
+interface CharacterDetails {
+  Role: string;
+  'Physical Characteristics': string;
+  Personality: string;
+  Events: string;
+  Relationships: string;
+  Aliases: string;
+}
 
-const CharacterProfile = ({ character, onBack, onShowNetwork }) => {
+// Define the structure of a single character object
+export interface CharacterData {
+  id: string;
+  name: string;
+  details: CharacterDetails;
+}
+
+// Define the component's Props interface
+interface CharacterProfileProps {
+  character: CharacterData; 
+  onBack: () => void;
+  onShowNetwork: (characterId: string) => void; 
+}
+
+const CharacterProfile = ({ character, onBack, onShowNetwork }: CharacterProfileProps) => {
   return (
     <div className="fixed inset-0 z-50 bg-theme-100 text-white animate-fadeIn flex flex-col">
       <div className="p-8 flex-1 overflow-y-auto">

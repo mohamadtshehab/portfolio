@@ -1,4 +1,6 @@
-const NovelText = ({ scrollRef }) => {
+import React, { RefObject } from 'react';
+
+const NovelText = ({ scrollRef }: { scrollRef: RefObject<HTMLDivElement | null>;  }) => {
     return (
       <main ref={scrollRef} className="flex-1 overflow-y-auto p-5 custom-scrollbar">
         <div className="max-w-2xl mx-auto pb-20">
@@ -18,10 +20,10 @@ const NovelText = ({ scrollRef }) => {
               The pact began with two people: Mohamad Shehab and his friend Aamer Al-Sumar. They had agreed to work together, but Mohamad, who had learned from his experiences, set his conditions firmly: no leniency, no excuses, hard work was the only way. After Aamer agreed, the search for three more members began.
             </p>
             <p className="text-lg leading-relaxed py-2 text-justify">
-              A mysterious person—let's call him "X"—was not part of their initial plans. But when they contacted him to ask about another colleague he had worked with before, "X" seized the chance and convinced them that he himself was the right fit for the mission. And so, he joined them.
+              A mysterious person—let&apos;s call him &quot;X&quot;—was not part of their initial plans. But when they contacted him to ask about another colleague he had worked with before, &quot;X&quot; seized the chance and convinced them that he himself was the right fit for the mission. And so, he joined them.
             </p>
             <p className="text-lg leading-relaxed py-2 text-justify">
-              The circle was completed with the addition of Rama Al-Sabbot and Tamam Mundher. But Tamam's joining was not smooth; "X" carried the shadows of an old, bitter experience with him. "X" tried to object, suggesting a four-member team would be more effective, but Mohamad and Rama's insistence settled the matter. The team was complete, and they named themselves The Avengers.
+              The circle was completed with the addition of Rama Al-Sabbot and Tamam Mundher. But Tamam&apos;s joining was not smooth; &quot;X&quot; carried the shadows of an old, bitter experience with him. &quot;X&quot; tried to object, suggesting a four-member team would be more effective, but Mohamad and Rama&apos;s insistence settled the matter. The team was complete, and they named themselves The Avengers.
             </p>
             <p className="text-lg leading-relaxed py-2 text-justify">
               The name was more than a slogan—it was a vow each made: to avenge past failures and create a project they could be proud of.
@@ -31,7 +33,7 @@ const NovelText = ({ scrollRef }) => {
           <div className="mb-8 font-serif">
             <h3 className="text-xl font-semibold mb-3 text-center">Chapter Two: Clash of Ideas and Birth of the Dream</h3>
             <p className="text-lg leading-relaxed py-2 text-justify">
-              The team's Telegram group became an arena for ideas. Many suggestions were thrown around, from turning engineering blueprints into 3D models, to building a smart parking system. But the first idea was repetitive, and the second was warned against by Professor Medhat Al-Sous, who told them it always failed.
+              The team&apos;s Telegram group became an arena for ideas. Many suggestions were thrown around, from turning engineering blueprints into 3D models, to building a smart parking system. But the first idea was repetitive, and the second was warned against by Professor Medhat Al-Sous, who told them it always failed.
             </p>
             <p className="text-lg leading-relaxed py-2 text-justify">
               Amid this deadlock, Mohamad Shehab lit a candle in the darkness. He drew inspiration from his personal experience while reading Jane Eyre, where he often got lost among its many characters. He wondered: What if there were an app that could read the novel, map out its characters and their relationships, and present them to the reader without spoiling the events?
@@ -44,10 +46,10 @@ const NovelText = ({ scrollRef }) => {
           <div className="mb-8 font-serif">
             <h3 className="text-xl font-semibold mb-3 text-center">Chapter Three: Allies in the Academy</h3>
             <p className="text-lg leading-relaxed py-2 text-justify">
-              Once the team settled on their unique idea, the next step was to gain the blessing of the academic staff. Their first stop was Dr. Nada Ghoneim's office. They presented the idea with both enthusiasm and anxiety. Her response was quick and decisive—her eyes lit up with admiration and she accepted immediately, not only approving the idea but also agreeing to be their official supervisor.
+              Once the team settled on their unique idea, the next step was to gain the blessing of the academic staff. Their first stop was Dr. Nada Ghoneim&apos;s office. They presented the idea with both enthusiasm and anxiety. Her response was quick and decisive—her eyes lit up with admiration and she accepted immediately, not only approving the idea but also agreeing to be their official supervisor.
             </p>
             <p className="text-lg leading-relaxed py-2 text-justify">
-              Her approval was the project's true birth certificate. From then on, her office became a regular stop where they shared updates and sought her advice and expertise.
+              Her approval was the project&apos;s true birth certificate. From then on, her office became a regular stop where they shared updates and sought her advice and expertise.
             </p>
             <p className="text-lg leading-relaxed py-2 text-justify">
               They did&apos; stop there. They also presented the idea to Dr. Ammar Al-Nahhas, who listened carefully and strongly encouraged them, reinforcing their confidence that they were on the right track.
@@ -60,10 +62,10 @@ const NovelText = ({ scrollRef }) => {
           <div className="mb-8 font-serif">
             <h3 className="text-xl font-semibold mb-3 text-center">Chapter Four: The First Rift… and a Mask Falls</h3>
             <p className="text-lg leading-relaxed py-2 text-justify">
-              As work began, masks started to fall. "X," who was supposed to be the team's technical pillar, began building walls around his work. He acted as if the project's frontend was his private kingdom, off-limits to others' input. His arrogance and superiority clashed repeatedly with the team spirit Mohamad tried to foster.
+              As work began, masks started to fall. &quot;X,&quot; who was supposed to be the team&apos;s technical pillar, began building walls around his work. He acted as if the project&apos;s frontend was his private kingdom, off-limits to others&apos; input. His arrogance and superiority clashed repeatedly with the team spirit Mohamad tried to foster.
             </p>
             <p className="text-lg leading-relaxed py-2 text-justify">
-              The conflict peaked during another course's project, when a technical discussion turned personal. &quot;X&quot; couldn&apos;t handle criticism of his work. After a heated argument with Mohamad, and harsh words directed at Rama, he quit in dramatic fashion—leaving behind a void and confusion.
+              The conflict peaked during another course&apos;s project, when a technical discussion turned personal. &quot;X&quot; couldn&apos;t handle criticism of his work. After a heated argument with Mohamad, and harsh words directed at Rama, he quit in dramatic fashion—leaving behind a void and confusion.
             </p>
             <p className="text-lg leading-relaxed py-2 text-justify">
               His departure was painful, but it felt like necessary surgery to remove a tumor threatening the team&apos;s body as a whole.

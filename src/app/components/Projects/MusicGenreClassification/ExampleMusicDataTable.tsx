@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { RefObject } from 'react';
 
 interface RowHighlight {
   id: number;
@@ -14,11 +14,11 @@ interface Music {
   TrackName: string;
   key: number;
   mode: number;
-  Popularity: number;
+  Popularity: number | string;
   acousticness: number;
   durationInMinMs: number;
   energy: number;
-  instrumentalness: number;
+  instrumentalness: string | number;
   liveness: number;
   loudness: number;
   speechiness: number;
@@ -30,7 +30,7 @@ interface Music {
 interface Props {
   data: Music[];
   rowRefs: React.RefObject<{ [key: number]: HTMLElement | null }>;
-  tableRef: React.RefObject<HTMLDivElement>;
+  tableRef: RefObject<HTMLDivElement | null>;
   rowHighlights: RowHighlight[];
 }
 
@@ -61,7 +61,7 @@ const ExampleMusicDataTable: React.FC<Props> = ({ data, rowRefs, tableRef, rowHi
           {data.map((row, rowIndex) => (
             <tr
               key={rowIndex}
-              ref={el => rowRefs.current[rowIndex] = el}
+              ref={(el) => {rowRefs.current[rowIndex] = el}}
               className="bw-full table-fixed border-t border-white/20 border-collapse"
             >
               <td className="px-4 py-2 text-white/60">{row.ArtistName}</td>

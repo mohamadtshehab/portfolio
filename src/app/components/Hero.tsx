@@ -1,3 +1,5 @@
+"use client";
+
 import { FaGithub, FaLinkedin } from 'react-icons/fa';
 import { HiOutlineArrowDown } from 'react-icons/hi';
 import Image from 'next/image';
@@ -68,7 +70,7 @@ const Hero = () => {
               alt="Personal Image"
               className="rounded-full object-cover shadow-2xl border-3 border-white/20"
               fill
-              priority // Important for LCP (Largest Contentful Paint)
+              priority
             />
           </div>
         </motion.div>

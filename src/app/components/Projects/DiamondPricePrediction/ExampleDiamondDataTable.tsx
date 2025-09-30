@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { RefObject } from 'react';
 
 interface RowHighlight {
   id: number;
@@ -24,7 +24,7 @@ interface Diamond {
 interface Props {
   data: Diamond[];
   rowRefs: React.RefObject<{ [key: number]: HTMLElement | null }>;
-  tableRef: React.RefObject<HTMLDivElement>;
+  tableRef: RefObject<HTMLDivElement | null>;
   rowHighlights: RowHighlight[];
 }
 
@@ -49,7 +49,7 @@ const DiamondDataTable: React.FC<Props> = ({ data, rowRefs, tableRef, rowHighlig
           {data.map((row, rowIndex) => (
             <tr
               key={rowIndex}
-              ref={el => rowRefs.current[rowIndex] = el}
+              ref={(el) => {rowRefs.current[rowIndex] = el}}
               className="border-t border-white/20"
             >
               <td className="px-4 py-2 text-white/60">{row.carat}</td>

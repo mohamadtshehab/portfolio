@@ -49,11 +49,11 @@ const ImageCarousel = () => {
     setCurrentIndex((prev) => prev + 1);
   };
 
-  const handleDotClick = (dotIndex) => {
-    if (isAnimating || currentIndex === dotIndex) return; // Prevent action if animating or dot is current
+  const handleDotClick = (dotIndex: number) => {
+    if (isAnimating || currentIndex === dotIndex) return;
     setIsAnimating(true);
     setCurrentIndex(dotIndex);
-  };
+};
 
   const handleTransitionEnd = () => {
     setIsAnimating(false);

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { RefObject } from 'react';
 
 interface RowHighlight {
   id: number;
@@ -9,10 +9,20 @@ interface RowHighlight {
   opacity: number;
 }
 
+interface CensusRowData {
+  id: number;
+  name: string; // Head of Household Name
+  houseCondition: string; // Original House Condition
+  femaleOrphans: number; // # Female Orphans (assuming it's a number)
+  otherCases: string; // Other Cases? (assuming it's a string like 'Yes'/'No')
+  specifyOtherCases: string; // Specify Other Cases
+  [key: string]: unknown; // FIX: Use 'unknown' for type safety
+  }
+
 interface Props {
-  data: any[];
+  data: CensusRowData[]; 
   rowRefs: React.RefObject<{ [key: number]: HTMLElement | null }>;
-  tableRef: React.RefObject<HTMLDivElement>;
+  tableRef: RefObject<HTMLDivElement | null>;
   rowHighlights: RowHighlight[];
 }
 
@@ -34,7 +44,7 @@ const CensusDataTable: React.FC<Props> = ({ data, rowRefs, tableRef, rowHighligh
           {data.map((row, rowIndex) => (
             <tr
               key={row.id}
-              ref={el => rowRefs.current[rowIndex] = el}
+              ref={(el) => { rowRefs.current[rowIndex] = el; }}
               className="border-t border-white/20"
             >
               <td className="px-4 py-2 font-medium text-white/60">{row.id}</td>

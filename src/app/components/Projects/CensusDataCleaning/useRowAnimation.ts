@@ -1,4 +1,5 @@
 import { useEffect, useRef, useState } from 'react';
+import React from 'react';
 
 interface RowHighlight {
   id: number;
@@ -11,8 +12,8 @@ interface RowHighlight {
 
 type UseRowAnimationReturn = {
   rowHighlights: RowHighlight[];
-  rowRefs: React.MutableRefObject<{ [key: number]: HTMLElement | null }>;
-  tableRef: React.RefObject<HTMLDivElement>;
+  rowRefs: React.RefObject<{ [key: number]: HTMLElement | null }>; 
+  tableRef: React.RefObject<HTMLDivElement | null>;
 };
 
 const useRowAnimation = (
@@ -39,6 +40,14 @@ const useRowAnimation = (
       if (!row) return;
 
       const rowRect = row.getBoundingClientRect();
+
+      if (!tableRef.current) {
+        // Optionally log a warning or just return/exit the function early
+        // if the table element hasn't been mounted yet.
+        console.warn("tableRef.current is null. Cannot calculate tableRect.");
+        return; // Exit the function gracefully
+    }
+    
       const tableRect = tableRef.current.getBoundingClientRect();
 
       // Calculate total width of all child cells

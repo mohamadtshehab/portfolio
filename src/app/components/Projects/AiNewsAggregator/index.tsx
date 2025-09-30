@@ -13,7 +13,7 @@ const AiNewsAggregator: React.FC = () => {
   const [showVideo, setShowVideo] = useState(false);
   const [showNotification, setShowNotification] = useState(false);
   const [showImage, setShowImage] = useState(false);
-  const [autoplayFailed, setAutoplayFailed] = useState(false);
+  const [, setAutoplayFailed] = useState(false);
   const videoRef = useRef<HTMLVideoElement>(null);
 
   useEffect(() => {

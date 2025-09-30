@@ -1,8 +1,10 @@
+// app/layout.tsx
 import type { Metadata } from "next";
 import Script from "next/script";
 import "./globals.css";
 import Header from './components/Header';
 import ParticlesBackground from './components/ParticlesBackground';
+
 
 export const metadata: Metadata = {
   title: "Mohamad Shehab - Portfolio",
@@ -16,7 +18,8 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" className="scroll-smooth">
+    // 4. Apply the font variable to the <html> tag
+    <html lang="en" className={`scroll-smooth`}>
       <body className={`antialiased relative`}>
         {/* Global Particle Background */}
         <ParticlesBackground />

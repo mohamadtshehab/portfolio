@@ -1,12 +1,12 @@
 import { characterProfiles } from './characters';
-
+import { ElementDefinition } from 'cytoscape';
 /**
  * Transforms character profile data into a format usable by Cytoscape.js.
  * @returns {cytoscape.ElementDefinition[]} An array of nodes and edges.
  */
 export function generateNetworkElements() {
-  const elements = [];
-  const edgeSet = new Set(); // To prevent duplicate edges
+  const elements: ElementDefinition[] = []; 
+  const edgeSet = new Set(); 
 
   // 1. Create a node for each character
   characterProfiles.forEach(profile => {
@@ -57,7 +57,7 @@ export function generateNetworkElements() {
  * @param {string} characterId The ID of the central character.
  * @returns {cytoscape.ElementDefinition[]} An array of nodes and edges.
  */
-export function generateSingleCharacterNetwork(characterId) {
+export function generateSingleCharacterNetwork(characterId: string) {
     const elements = [];
     const centralCharacter = characterProfiles.find(p => p.id === characterId);
   

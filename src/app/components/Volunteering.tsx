@@ -117,7 +117,7 @@ const ReactionCard: React.FC<Reaction> = ({ author, original, translation }) => 
 
         <div className="border-t border-white/10 pt-4 mt-4">
           <p className="text-white/70 text-sm leading-relaxed italic">
-            "{translation}"
+          &quot;{translation}&quot;
           </p>
         </div>
       </div>

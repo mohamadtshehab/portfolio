@@ -10,6 +10,9 @@ export const metadata: Metadata = {
   title: "Mohamad Shehab - AI Engineer & Backend Developer Portfolio",
   description: "Portfolio of an AI Engineer and Backend Developer showcasing expertise in intelligent system creation, complex backend architecture, and data analysis.",
   keywords: ["AI Engineer", "Backend Developer", "Intelligent Systems", "Data Analysis", "React", "Next.js", "Portfolio", "Software Development"],
+  icons: {
+    icon: '/favicon.ico',
+},
 };
 
 export default function RootLayout({

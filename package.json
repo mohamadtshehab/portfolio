@@ -9,6 +9,7 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@netlify/plugin-nextjs": "^5.13.3",
     "@phosphor-icons/react": "^2.1.10",
     "@react-email/render": "^1.2.3",
     "@react-three/drei": "^10.3.0",

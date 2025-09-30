@@ -7,9 +7,9 @@ import ParticlesBackground from './components/ParticlesBackground';
 
 
 export const metadata: Metadata = {
-  title: "Mohamad Shehab - Portfolio",
-  description: "Full Stack Developer Portfolio showcasing projects and skills",
-  keywords: ["Full Stack Developer", "Web Development", "Portfolio", "React", "Next.js"],
+  title: "Mohamad Shehab - AI Engineer & Backend Developer Portfolio",
+  description: "Portfolio of an AI Engineer and Backend Developer showcasing expertise in intelligent system creation, complex backend architecture, and data analysis.",
+  keywords: ["AI Engineer", "Backend Developer", "Intelligent Systems", "Data Analysis", "React", "Next.js", "Portfolio", "Software Development"],
 };
 
 export default function RootLayout({

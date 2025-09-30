@@ -48,10 +48,10 @@ const Hero = () => {
 >
   View My Work
 </a>
-            <a href="https://github.com/your-profile" target="_blank" rel="noopener noreferrer" className="text-3xl text-white/70 hover:text-white transition-colors">
+            <a href="https://github.com/mohamadtshehab" target="_blank" rel="noopener noreferrer" className="text-3xl text-white/70 hover:text-white transition-colors">
               <FaGithub />
             </a>
-            <a href="https://linkedin.com/in/your-profile" target="_blank" rel="noopener noreferrer" className="text-3xl text-white/70 hover:text-white transition-colors">
+            <a href="https://www.linkedin.com/in/mohamad-shehab-493121279" target="_blank" rel="noopener noreferrer" className="text-3xl text-white/70 hover:text-white transition-colors">
               <FaLinkedin />
             </a>
           </div>

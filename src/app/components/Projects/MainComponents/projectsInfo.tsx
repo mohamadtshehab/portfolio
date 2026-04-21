@@ -43,11 +43,7 @@ const projects: PortfolioProject[] = [
   {
     category: 'intelligent-generative-ai',
     title: 'Maknoon',
-    description: `Faced with the challenge of analyzing long, complex Arabic novels without a dedicated tool, I architected and developed
-      Maknoon, a first-of-its-kind multi-agent system, to efficiently extract and organize detailed character data. My action involved
-      designing an innovative AI workflow built with Django and LangGraph, which progressively cleans, analyzes, and builds character
-      profiles. The result is a highly effective system that extracts and organizes detailed
-      information about character traits, relationships, and key events, clearly demonstrating my expertise in both backend and AI engineering.`,
+    description: `I built Maknoon as a multi-agent Arabic novel research tool: Django and LangGraph orchestrate progressive cleaning and graph-style reasoning, Celery and Redis handle async work, and Gemini plus Cohere back extraction of character traits, relationships, and events with LangSmith observability and WebSockets for live UI updates. The reader below is the portfolio-embedded demo—full backend services are not wired to production from this page.`,
     technologies: [
       'LangGraph',
       'LangSmith',
@@ -85,13 +81,7 @@ const projects: PortfolioProject[] = [
   {
     category: 'full-stack',
     title: 'Remedya',
-    description: `Faced with the challenge of the pharmacy market being fragmented between complex management systems and basic e-commerce
-      sites, I architected and led the development of Remedya, an all-in-one platform that unifies both functions. My action involved
-      implementing a custom e-commerce engine that enforces critical safety and efficiency rules, such as FIFO (First-In, First-Out)
-      sales for waste reduction and strict verification for prescription medications, alongside building two distinct user experiences:
-      a robust management dashboard with detailed analytics, inventory, and staff management for owners, and a safe customer marketplace
-      with features like a built-in Drug Interaction Checker and Allergy Alerts. The result is a single platform that makes pharmacies
-      run more smoothly and provides customers with a safer, more reliable online experience.`,
+    description: `I built Remedya as a Laravel/MySQL pharmacy platform that merges back-office operations with a customer storefront: custom commerce rules (FIFO stock for expiry-sensitive inventory, prescription checks), Meilisearch-backed discovery, owner dashboards for analytics, inventory, and staff, plus a shopper experience with drug-interaction and allergy alerts and WebSockets where needed. The carousel below is a static UI walkthrough—not a live deployment of the full stack.`,
     technologies: ['PHP', 'Laravel', 'MySQL', 'SQL', 'Mellisearch', 'Websockets'],
     githubUrl: 'https://github.com/mohamadtshehab/PROJECT-1',
     docUrl:
@@ -102,11 +92,7 @@ const projects: PortfolioProject[] = [
   {
     category: 'data-mining-quality',
     title: 'Population Census Data Cleaning',
-    description: `Facing the critical challenge of working with unstructured Arabic census data that contained numerous errors, I volunteered
-      as a data analyst with the task of cleaning and validating this data to ensure its integrity. My action involved developing over
-      150 granular validation rules across 66 distinct fields and implementing automation using the Pandas library to streamline error
-      detection and output structured JSON reports. This rigorous process resulted in the successful identification of more than 300 data
-      quality issues present in 90% of the 203 census entries, significantly improving the reliability of the dataset.`,
+    description: `I built a volunteer census-quality pipeline on messy Arabic administrative records: 150+ validation rules spanning 66 fields, automated Pandas checks, and structured JSON reports that flagged 300+ concrete issues across most of 203 entries. The table below is an interactive portfolio slice of that workflow—source systems and raw exports are not connected here.`,
     technologies: ['Python', 'Pandas', 'Draw.io', 'Excel', 'JSON'],
     docUrl:
       'https://drive.google.com/file/d/1OnfAxi3yKwZiNC60K3a0dzXTlBPtmk0H/view?usp=sharing',
@@ -116,7 +102,7 @@ const projects: PortfolioProject[] = [
   {
     category: 'data-mining-quality',
     title: 'Capitol Cycles: DC Bikeshare Data Mining',
-    description: `I built a full data-mining study on Washington, DC–style bikeshare trips: merging trip and weather data in Google Colab, spatial joins with GeoPandas (CBD polygon, residential zones, transit proximity), engineered fares and geohash activity tiers, rich Plotly analytics, inferential tests (chi-square, OLS), Prophet forecasting with seasonality, and K-means / DBSCAN segmentation. This interactive chapter scroll pairs every figure in the case study with the original Arabic methodology notes.`,
+    description: `I built Capitol Cycles as a full bikeshare data-mining study (DC-style trip and weather data): GeoPandas spatial joins (CBD polygon, residential zones, transit proximity), engineered fares and geohash tiers, Plotly-heavy EDA, inferential tests (chi-square, OLS), Prophet seasonality and forecasts, and K-means / DBSCAN segmentation in Google Colab. The chapter scroll below pairs each figure with the original Arabic methodology notes—heavy compute stayed in Colab, not in the browser.`,
     technologies: [
       'Python',
       'Pandas',
@@ -134,15 +120,7 @@ const projects: PortfolioProject[] = [
   {
     category: 'intelligent-generative-ai',
     title: 'Ath.ai - AI Furniture Visualizer',
-    description: `Facing the significant 
-
-challenge of a market where users had to choose between complex 3D modeling software (like Blender) or costly, non-custom advice from interior designers, my task was to architect and develop Ath.ai , an 
-
-AI-powered web application to enable swift, customized in-room furniture visualization. My 
-
-action involved building a system on a Django backend with a React/ThreeJS frontend that utilizes state-of-the-art generative capabilities, including NLP, transformer architectures, diffusion models (Zero123++), and Large Reconstruction Models (LRMs), implementing two pipelines (2D-to-3D and Text-to-3D) for model generation. The 
-
-result is a highly efficient platform that assists users in generating high-quality 3D furniture models from just a single image or text description, successfully overcoming the limitations of previous applications.`,
+    description: `I built Ath.ai as a generative furniture visualizer: a Django (and Flask-serviced) backend with a React + Three.js client, pairing NLP and transformer tooling with diffusion (Zero123++) and large reconstruction models for parallel 2D-to-3D and text-to-3D pipelines. The block below is a portfolio-embedded viewer and sample flow—full model training and GPU inference are not executed on this site.`,
     technologies: ['Transformers', 'Diffusion Models', 'Django', 'Flask'],
     githubUrl: 'https://github.com/mohamadshehab/athai',
     docUrl:
@@ -153,12 +131,7 @@ result is a highly efficient platform that assists users in generating high-qual
   {
     category: 'intelligent-generative-ai',
     title: 'Automated AI News Aggregator & Digest',
-    description: `Facing the constant challenge of staying updated on the rapidly moving field of AI news, I decided to
-      develop an automated system that could efficiently collect, filter, and provide multi-lingual summaries to subscribers.
-      My action involved architecting an n8n workflow that automatically ingested various RSS feeds, filtered the content, and then
-      leveraged the Google Gemini API to generate high-quality news summaries in both English and Arabic. The resulting summaries are
-      then seamlessly delivered directly to subscribers via the Telegram API on the Starfall AI channel, providing a reliable, dual-language
-      daily news digest with minimal manual effort. (Don't forget to subscribe to the channel from URL above. 😉)`,
+    description: `I built an automated AI news digest on n8n: scheduled RSS ingestion, light filtering, Google Gemini for bilingual English/Arabic summaries, and Telegram delivery to the Starfall AI channel via the Bot API. The panel below previews the subscriber-facing experience—use the Telegram link on the card for the live feed; n8n and Gemini are not invoked from this page.`,
     technologies: ['n8n', 'RSS', 'Google Gemini API', 'Telegram API', 'JavaScript'],
     docUrl:
       'https://drive.google.com/file/d/1fxyomUNtPIOY1wKHO9KH_bBywZaFz8Tk/view?usp=sharing',
@@ -169,8 +142,7 @@ result is a highly efficient platform that assists users in generating high-qual
   {
     category: 'ml-supervised',
     title: 'Diamond Pricing Prediction',
-    description: `During my internship at SHAI For AI, I ranked 7th/100 in a Kaggle competition after I developed a Diamond Pricing Prediction model, achieving an RMSE of 517 by 
-      exploring and engineering features, building a preprocessing pipeline, and implementing an ensemble of regression models.`,
+    description: `I built a diamond price regressor for a SHAI For AI internal competition (7th of 100, RMSE 517): exploratory analysis, feature engineering, a reusable preprocessing pipeline, and a scikit-learn voting ensemble over several base regressors. The widget below runs a lightweight in-browser estimator on curated sample rows—not the full Colab training stack.`,
     technologies: ['Scikit-learn', 'Pandas', 'Seaborn', 'VotingRegressors'],
     colabUrl:
       'https://colab.research.google.com/drive/1Daa2cYRXZdD8_yH9Z0mJ4Z8xf3JCoR8B?usp=sharing',
@@ -180,15 +152,13 @@ result is a highly efficient platform that assists users in generating high-qual
   {
     category: 'ml-supervised',
     title: 'Music Genre Classification',
-    description: `I developed a machine learning model to classify songs by genre using a dataset of around 18,000 songs. The work involved data
-      analysis, handling missing and outlier values, creating new features, and applying standardization and normalization techniques. After comparing
-      several models using the PyCaret library, the CatBoost Classifier achieved the best performance based on the F1-score.`,
+    description: `I built a music genre classifier on ~18k tracks: missing-value and outlier handling, custom audio-derived features, standardization and normalization, and PyCaret-driven model search where CatBoost led on F1. The UI below is a portfolio playground on sample rows and static metrics—model training and dataset IO are not re-run in the browser.`,
     technologies: [
       'Scikit-learn',
       'Pandas & Numpy',
       'PyCaret',
       'Matplotlib & Seaborn',
-      'CatBooost',
+      'CatBoost',
     ],
     colabUrl:
       'https://colab.research.google.com/drive/12bByJ8MSbapHg65P4hIvW7oIT08_YwNn?usp=sharing',
@@ -200,9 +170,7 @@ result is a highly efficient platform that assists users in generating high-qual
   {
     category: 'full-stack',
     title: 'Basic Digital Consultation Application',
-    description: `My first project in web development - a digital consultation platform that connects users with experts 
-      in fields like medicine, mental health, business, family, and career guidance. Key features include: 
-      expert listings, private consultations, wallet System, and role management`,
+    description: `I built a Laravel/MySQL digital consultation marketplace (early full-stack project): categorized expert listings, booking flows, wallets, and role separation for clients, experts, and admins across medicine, mental health, business, family, and career verticals. The carousel below is a static UI tour—the app is not hosted as a live service from this portfolio.`,
     technologies: ['Laravel', 'MySQL'],
     githubUrl: 'https://github.com/mohamadtshehab/expert-management-system',
     interactiveComponent: <ConsultationApp />,

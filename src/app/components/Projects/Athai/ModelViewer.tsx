@@ -64,7 +64,7 @@ const ModelViewer = ({ modelUrl, mtlUrl, prompt, imageUrl }: ModelViewerProps) =
                   <p className="text-white italic text-lg">{prompt}</p>
                 </>
               ) : (
-                <div className="relative w-full h-64 overflow-hidden rounded-lg cursor-pointer transition-transform hover:scale-[1.02]">
+                <div className="relative h-64 w-full max-w-full cursor-pointer overflow-hidden rounded-lg transition-transform hover:scale-[1.02]">
                   {imageUrl && (
                     <Image
                       src={imageUrl}
@@ -125,8 +125,9 @@ const ModelViewer = ({ modelUrl, mtlUrl, prompt, imageUrl }: ModelViewerProps) =
           <span className="text-white/70 text-sm">Preparing 3D view…</span>
         </div>
       ) : (
-        <div className=" h-[250px]">
+        <div className="h-[min(280px,55dvh)] w-full max-w-full sm:h-[250px]">
           <Canvas
+            className="touch-none"
             camera={{ position: [0, 2, 5], fov: 50 }}
           >
             <ambientLight intensity={0.8} />

@@ -1,72 +1,64 @@
 'use client';
-import { useState } from 'react';
+import { useMemo, useState } from 'react';
 import ProjectCard from './ProjectCard';
 import projects from './projectsInfo';
-import { FaChevronDown } from 'react-icons/fa';
+import {
+  PROJECT_CATEGORY_META,
+  PROJECT_CATEGORY_ORDER,
+  type ProjectCategoryId,
+} from './projectCategories';
 
 const Projects = () => {
-  const [showAllProjects, setShowAllProjects] = useState(false);
+  const [activeCategory, setActiveCategory] = useState<ProjectCategoryId>(
+    PROJECT_CATEGORY_ORDER[0],
+  );
+
+  const filteredProjects = useMemo(
+    () => projects.filter((p) => p.category === activeCategory),
+    [activeCategory],
+  );
 
   return (
-    <section id="projects" className="py-20 relative bg-transparent">
-      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-        <h2 className="text-4xl font-bold text-center text-white mb-12">
+    <section id="projects" className="relative bg-transparent py-20">
+      <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
+        <h2 className="mb-8 text-center text-4xl font-bold text-white sm:mb-10">
           My Projects
         </h2>
-        
+
+        <div
+          className="-mx-1 mb-10 flex gap-2 overflow-x-auto overflow-y-visible px-1 pb-1 [-ms-overflow-style:none] [scrollbar-width:none] sm:mx-0 sm:mb-12 sm:flex-wrap sm:justify-center sm:overflow-visible sm:px-0 sm:pb-0 [&::-webkit-scrollbar]:hidden"
+          role="tablist"
+          aria-label="Filter projects by category"
+        >
+          {PROJECT_CATEGORY_ORDER.map((id) => (
+            <button
+              key={id}
+              type="button"
+              role="tab"
+              aria-selected={activeCategory === id}
+              title={PROJECT_CATEGORY_META[id].label}
+              onClick={() => setActiveCategory(id)}
+              className={`max-w-[min(100%,280px)] shrink-0 truncate rounded-full border px-3 py-2 text-left text-xs font-medium transition sm:max-w-none sm:px-4 sm:text-center sm:text-sm ${
+                activeCategory === id
+                  ? 'border-teal-400/50 bg-teal-500/25 text-teal-100'
+                  : 'border-white/15 bg-white/[0.06] text-white/75 hover:border-white/30 hover:text-white'
+              }`}
+            >
+              <span className="sm:hidden">{PROJECT_CATEGORY_META[id].shortLabel}</span>
+              <span className="hidden sm:inline">{PROJECT_CATEGORY_META[id].label}</span>
+            </button>
+          ))}
+        </div>
+
         <div className="space-y-8">
-          {/* First Two Projects - Always Visible with Fade Effect */}
-          <div className="space-y-8">
-            <ProjectCard {...projects[0]} />
-            <div className="w-full h-px bg-gradient-to-r from-transparent via-white to-transparent opacity-50"></div>
-            <div className="relative">
-              <ProjectCard {...projects[1]} />
+          {filteredProjects.map((project, index) => (
+            <div key={`${project.title}-${index}`}>
+              {index > 0 ? (
+                <div className="my-8 h-px w-full bg-gradient-to-r from-transparent via-white to-transparent opacity-50" />
+              ) : null}
+              <ProjectCard {...project} />
             </div>
-          </div>
-
-          <div className="flex justify-center">
-  <button
-    onClick={() => setShowAllProjects(!showAllProjects)}
-    // Increased padding for a slightly larger, more inviting target
-    className="p-3 px-6 rounded-full hover:bg-white/10 transition-colors group flex items-center space-x-3"
-    title={showAllProjects ? 'Show Less' : `View All Projects (${projects.length - 2} more)`}
-  >
-    {/* Text will only show when showAllProjects is false */}
-    {!showAllProjects && (
-      <>
-        {/* Main CTA */}
-        <span className="text-white/80 font-medium">
-          View All Projects
-        </span>
-
-        {/* Highlighted Project Count Badge */}
-        <span className="bg-white/10 text-white/80 text-xs font-semibold px-3 py-1 rounded-full group-hover:bg-white/20 transition-colors">
-          {projects.length - 2} more
-        </span>
-      </>
-    )}
-
-    {/* The chevron icon */}
-    <FaChevronDown
-      className={`text-xl text-white/60 transition-transform duration-300 ease-in-out
-        ${showAllProjects ? 'rotate-180' : ''} 
-        group-hover:text-white/90 group-hover:translate-y-0.5`}
-      // The group-hover:translate-y-0.5 gives a subtle "press me" nudge on hover
-    />
-  </button>
-</div>
-
-          {/* Additional Projects - Conditional */}
-          {showAllProjects && (
-            <div className="space-y-8">
-              {projects.slice(2).map((project, index) => (
-                <div key={index + 1}>
-                  <div className="w-full h-px bg-gradient-to-r from-transparent via-white to-transparent opacity-50 my-8"></div>
-                  <ProjectCard {...project} />
-                </div>
-              ))}
-            </div>
-          )}
+          ))}
         </div>
       </div>
     </section>

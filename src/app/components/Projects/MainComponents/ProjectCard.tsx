@@ -3,8 +3,11 @@ import { useState, useEffect, useRef, ReactElement} from 'react';
 import { FaGithub, FaPlay, FaFileAlt, FaRedo, FaTelegram, FaEye } from 'react-icons/fa';
 import styles from './ProjectCard.module.css';
 import { SiGooglecolab } from 'react-icons/si';
+import type { ProjectCategoryId } from './projectCategories';
+import { PROJECT_CATEGORY_META } from './projectCategories';
 
 interface ProjectCardProps {
+  category?: ProjectCategoryId;
   title: string;
   description: string;
   technologies: string[];
@@ -21,6 +24,7 @@ interface ProjectCardProps {
 let globalHasSeenNote = false;
 
 const ProjectCard = ({ 
+  category,
   title, 
   description, 
   technologies, 
@@ -70,7 +74,13 @@ const ProjectCard = ({
   return (
     <div className="relative rounded-lg overflow-hidden bg-transparent ">
       <div className="p-6 " >
-        <div className="flex items-center mb-4 ">
+        <div className="mb-4">
+          {category ? (
+            <p className="mb-1.5 text-[0.65rem] font-semibold uppercase tracking-[0.12em] text-teal-200/85">
+              {PROJECT_CATEGORY_META[category].label}
+            </p>
+          ) : null}
+          <div className="flex items-center ">
           <h3 className="text-2xl font-semibold text-white mr-4 ">
             {title}
           </h3>
@@ -120,6 +130,7 @@ const ProjectCard = ({
             </a>
             )}
           </div>
+          </div>
         </div>
 
         {!showInteractive && !showNote ? (
@@ -158,39 +169,46 @@ const ProjectCard = ({
             </div>
           </>
         ) : showNote ? (
-          <div className="text-center py-8">
-            <div className="bg-white/10 backdrop-blur-sm rounded-lg p-6 max-w-2xl mx-auto border border-white/20">
+          <div className="py-6 text-center sm:py-8 px-3 sm:px-4 md:px-6">
+            <div className="mx-auto w-full max-w-2xl rounded-md border border-white/20 bg-white/10 p-4 backdrop-blur-sm sm:rounded-lg sm:p-5 md:p-6">
               <div className="mb-4">
-                <div className="w-16 h-16 mx-auto mb-4 bg-transparent border-2 border-white/30 rounded-full flex items-center justify-center">
-                  <FaPlay className="text-2xl text-white/80" />
+                <div className="mx-auto mb-4 flex h-14 w-14 items-center justify-center rounded-full border-2 border-white/30 bg-transparent sm:h-16 sm:w-16">
+                  <FaPlay className="text-xl text-white/80 sm:text-2xl" />
                 </div>
-                <h3 className="text-xl font-semibold text-white mb-3">Interactive Showcase</h3>
+                <h3 className="mb-3 text-lg font-semibold text-white sm:text-xl">
+                  Interactive Showcase
+                </h3>
               </div>
-              
-              <div className="text-white/90 text-left space-y-3 mb-6">
+
+              <div className="mb-6 space-y-3 text-left text-sm text-white/90 sm:text-base">
                 <p>
-                  This interactive showcase represents just a <span className="text-white font-semibold underline">core part</span> of the complete project experience.
+                  This interactive showcase represents just a{" "}
+                  <span className="font-semibold text-white underline">core part</span> of
+                  the complete project experience.
                 </p>
                 <p>
-                  While it demonstrates the main functionality and gives you a hands-on feel for the project&apos;s capabilities, 
-                  it doesn&apos;t capture the full scope, context, and comprehensive features that make up the entire solution. 
-                  This applies to all interactive showcases in this portfolio.
+                  While it demonstrates the main functionality and gives you a hands-on feel
+                  for the project&apos;s capabilities, it doesn&apos;t capture the full scope,
+                  context, and comprehensive features that make up the entire solution. This
+                  applies to all interactive showcases in this portfolio.
                 </p>
               </div>
-              
-              <div className="flex gap-3 justify-center">
+
+              <div className="flex flex-col-reverse gap-3 sm:flex-row sm:flex-wrap sm:justify-center">
                 <button
+                  type="button"
+                  onClick={() => setShowNote(false)}
+                  className="custom-button w-full justify-center sm:w-auto"
+                >
+                  Go Back
+                </button>
+                <button
+                  type="button"
                   onClick={handleNoteAcknowledge}
-                  className="custom-button"
+                  className="custom-button w-full justify-center sm:w-auto"
                 >
                   <FaPlay className="text-lg" />
                   <span className="font-semibold">Continue to Showcase</span>
-                </button>
-                <button
-                  onClick={() => setShowNote(false)}
-                  className="custom-button"
-                >
-                  Go Back
                 </button>
               </div>
             </div>

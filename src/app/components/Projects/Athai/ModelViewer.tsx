@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, Suspense } from 'react';
+import { useState, Suspense, useEffect } from 'react';
 import { FaCube } from 'react-icons/fa'; // Keep FaCube if used elsewhere
 import { IoSparkles } from 'react-icons/io5';
 import { ArrowLeft } from 'lucide-react'; // Import the new icon
@@ -16,10 +16,29 @@ interface ModelViewerProps {
   imageUrl?: string;
 }
 
+function isWebGLAvailable(): boolean {
+  if (typeof window === "undefined") return false;
+  try {
+    const canvas = document.createElement("canvas");
+    return !!(
+      canvas.getContext("webgl2") ||
+      canvas.getContext("webgl") ||
+      canvas.getContext("experimental-webgl")
+    );
+  } catch {
+    return false;
+  }
+}
+
 const ModelViewer = ({ modelUrl, mtlUrl, prompt, imageUrl }: ModelViewerProps) => {
   const [isLoading, setIsLoading] = useState(false);
   const [showModel, setShowModel] = useState(false);
   const [isImageExpanded, setIsImageExpanded] = useState(false);
+  const [webglAvailable, setWebglAvailable] = useState<boolean | null>(null);
+
+  useEffect(() => {
+    setWebglAvailable(isWebGLAvailable());
+  }, []);
 
   const handleGenerateClick = () => {
     setIsLoading(true);
@@ -82,6 +101,28 @@ const ModelViewer = ({ modelUrl, mtlUrl, prompt, imageUrl }: ModelViewerProps) =
               )}
             </button>
           </div>
+        </div>
+      ) : webglAvailable === false ? (
+        <div className="relative flex min-h-[250px] flex-col items-center justify-center gap-4 rounded-lg border border-white/15 bg-[#0a1f1a]/60 px-6 py-8 text-center">
+          <p className="text-white/90 font-medium">
+            3D preview needs WebGL
+          </p>
+          <p className="max-w-md text-sm text-white/70 leading-relaxed">
+            This environment has WebGL disabled (common in some embedded or sandboxed
+            browsers). Open the site in Chrome, Firefox, or Safari with hardware
+            acceleration enabled to use the interactive model.
+          </p>
+          <button
+            type="button"
+            onClick={() => setShowModel(false)}
+            className="mt-2 rounded-full border border-white/30 bg-white/10 px-6 py-2 text-sm font-semibold text-white transition-colors hover:bg-white/20"
+          >
+            Back
+          </button>
+        </div>
+      ) : webglAvailable === null ? (
+        <div className="flex h-[250px] items-center justify-center rounded-lg border border-white/10 bg-[#0a1f1a]/40">
+          <span className="text-white/70 text-sm">Preparing 3D view…</span>
         </div>
       ) : (
         <div className=" h-[250px]">

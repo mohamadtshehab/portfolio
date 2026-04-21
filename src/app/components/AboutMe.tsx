@@ -8,7 +8,7 @@ const AboutMe = () => {
           About Me
         </h2>
         
-        <div className="max-w-4xl mx-auto">+
+        <div className="max-w-4xl mx-auto">
           <div className="space-y-6">
             <div className="space-y-4">
               <p className="text-lg text-white/90 leading-relaxed">

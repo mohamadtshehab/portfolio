@@ -75,8 +75,8 @@ const Contact = () => {
             <h3 className="text-2xl font-semibold text-white"></h3>
             <div className="flex items-center space-x-4 text-gray-300">
               <FaEnvelope className="text-2xl text-white" />
-              <a href="mailto:mohamadshehab@my.uopeople.edu">
-                mohamadshehab@my.uopeople.edu
+              <a href="mailto:iammohamadshehab@gmail.com">
+                iammohamadshehab@gmail.com
               </a>
             </div>
             <div className="flex items-center space-x-4 text-gray-300">

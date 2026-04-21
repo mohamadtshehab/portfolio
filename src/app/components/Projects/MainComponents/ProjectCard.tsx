@@ -3,11 +3,8 @@ import { useState, useEffect, useRef, ReactElement} from 'react';
 import { FaGithub, FaPlay, FaFileAlt, FaRedo, FaTelegram, FaEye } from 'react-icons/fa';
 import styles from './ProjectCard.module.css';
 import { SiGooglecolab } from 'react-icons/si';
-import type { ProjectCategoryId } from './projectCategories';
-import { PROJECT_CATEGORY_META } from './projectCategories';
 
 interface ProjectCardProps {
-  category?: ProjectCategoryId;
   title: string;
   description: string;
   technologies: string[];
@@ -24,7 +21,6 @@ interface ProjectCardProps {
 let globalHasSeenNote = false;
 
 const ProjectCard = ({ 
-  category,
   title, 
   description, 
   technologies, 
@@ -75,11 +71,6 @@ const ProjectCard = ({
     <div className="relative rounded-lg overflow-hidden bg-transparent ">
       <div className="p-6 " >
         <div className="mb-4">
-          {category ? (
-            <p className="mb-1.5 text-[0.65rem] font-semibold uppercase tracking-[0.12em] text-teal-200/85">
-              {PROJECT_CATEGORY_META[category].label}
-            </p>
-          ) : null}
           <div className="flex flex-wrap items-center gap-x-4 gap-y-2">
           <h3 className="text-xl font-semibold text-white sm:text-2xl">
             {title}

@@ -51,14 +51,18 @@ const Projects = () => {
         </div>
 
         <div className="space-y-8">
-          {filteredProjects.map((project, index) => (
+          {filteredProjects.map((project, index) => {
+            const { category, ...cardProps } = project;
+            void category;
+            return (
             <div key={`${project.title}-${index}`}>
               {index > 0 ? (
                 <div className="my-8 h-px w-full bg-gradient-to-r from-transparent via-white to-transparent opacity-50" />
               ) : null}
-              <ProjectCard {...project} />
+              <ProjectCard {...cardProps} />
             </div>
-          ))}
+            );
+          })}
         </div>
       </div>
     </section>

@@ -1,21 +1,9 @@
 'use client';
-import { useState, useEffect, useRef, ReactElement} from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { FaGithub, FaPlay, FaFileAlt, FaRedo, FaTelegram, FaEye } from 'react-icons/fa';
 import styles from './ProjectCard.module.css';
 import { SiGooglecolab } from 'react-icons/si';
-
-interface ProjectCardProps {
-  title: string;
-  description: string;
-  technologies: string[];
-  githubUrl?: string;
-  docUrl?: string;
-  interactiveComponent: ReactElement;
-  telegramUrl?: string;
-  colabUrl?: string;
-  interactive?: boolean;
-  note?: string;
-}
+import type { ProjectCardProps } from './portfolioProject';
 
 // Global state to track if user has seen the note across all projects
 let globalHasSeenNote = false;

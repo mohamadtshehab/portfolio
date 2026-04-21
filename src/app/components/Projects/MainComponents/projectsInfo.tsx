@@ -1,5 +1,6 @@
 import type { ReactElement } from 'react';
 import dynamic from 'next/dynamic';
+import JstorRag from '../JstorRag/index';
 import type { ProjectCategoryId } from './projectCategories';
 
 const Maknoon = dynamic(() => import('../Maknoon/index'), { ssr: false });
@@ -58,6 +59,27 @@ const projects: PortfolioProject[] = [
       'Cohere',
     ],
     interactiveComponent: <Maknoon />,
+    interactive: true,
+  },
+  {
+    category: 'intelligent-generative-ai',
+    title: 'JSTOR RAG — article-scoped research assistant',
+    description: `I built jstor-rag as a Chrome extension (MV3, Svelte 5) paired with a local FastAPI backend that turns a single JSTOR article URL into a searchable vector collection, then answers questions with LangGraph-driven agentic RAG: document-scoped retrieval, checkpointed multi-turn memory, Playwright-based ingestion, section-aware chunking, Chroma embeddings, and Gemini/Groq for embed and chat. The demo below is a static preview of the side-panel experience (sample article, digest, and preset Q&A)—the full stack does not run in the browser here.`,
+    technologies: [
+      'FastAPI',
+      'LangGraph',
+      'LangChain',
+      'ChromaDB',
+      'Playwright',
+      'Chrome MV3',
+      'Svelte 5',
+      'Google Gemini',
+      'Groq',
+      'Pydantic Settings',
+      'WebSockets',
+    ],
+    githubUrl: 'https://github.com/mohamadtshehab/jstor-rag',
+    interactiveComponent: <JstorRag />,
     interactive: true,
   },
   {

@@ -5,8 +5,30 @@ import { HiOutlineArrowDown } from 'react-icons/hi';
 import Image from 'next/image';
 import { motion } from 'framer-motion';
 import { TypeAnimation } from 'react-type-animation';
+import { useCallback, useEffect, useState } from 'react';
+
+const HERO_IMAGES = [
+  "/my-image1.jpg",
+  "/my-image2.jpg",
+  "/my-image3.jpg",
+] as const;
+
+const ROTATE_MS = 4500;
 
 const Hero = () => {
+  const [photoIndex, setPhotoIndex] = useState(0);
+
+  const advance = useCallback(() => {
+    setPhotoIndex((i) => (i + 1) % HERO_IMAGES.length);
+  }, []);
+
+  useEffect(() => {
+    const mq = window.matchMedia("(prefers-reduced-motion: reduce)");
+    if (mq.matches) return;
+
+    const id = window.setInterval(advance, ROTATE_MS);
+    return () => window.clearInterval(id);
+  }, [advance]);
   return (
     <section
       className="min-h-screen flex items-center justify-center text-white p-8 relative overflow-hidden"
@@ -38,7 +60,7 @@ const Hero = () => {
             repeat={Infinity}
           />
          <p className="max-w-xl text-lg text-white/70 mb-8">
-  Glad your&apos;e here. This portfolio was built with the same attention to detail I apply to my projects. Go ahead, click around, and you might be surprised by what you find.
+  Glad you&apos;re here. This portfolio was built with the same attention to detail I apply to my projects. Go ahead, click around, and you might be surprised by what you find.
 </p>
           {/* CTA and Socials */}
           <div className="flex items-center justify-center md:justify-start gap-4">
@@ -64,14 +86,21 @@ const Hero = () => {
           transition={{ duration: 0.8, delay: 0.2 }}
           className="md:w-5/12 flex justify-center"
         >
-          <div className="relative w-[300px] h-[300px] md:w-[400px] md:h-[400px]">
-            <Image
-              src="/my-image.jpg"
-              alt="Personal Image"
-              className="rounded-full object-cover shadow-2xl border-3 border-white/20"
-              fill
-              priority
-            />
+          <div className="relative h-[300px] w-[300px] overflow-hidden rounded-full shadow-2xl ring-[3px] ring-white/20 md:h-[400px] md:w-[400px]">
+            {HERO_IMAGES.map((src, i) => (
+              <Image
+                key={src}
+                src={src}
+                alt={`Mohamad Shehab — photo ${i + 1} of ${HERO_IMAGES.length}`}
+                className={`absolute inset-0 object-cover transition-opacity duration-700 ease-in-out ${
+                  i === photoIndex ? "opacity-100" : "opacity-0"
+                }`}
+                fill
+                sizes="(max-width: 768px) 300px, 400px"
+                priority={i === 0}
+                aria-hidden={i !== photoIndex}
+              />
+            ))}
           </div>
         </motion.div>
       </div>

@@ -1,10 +1,10 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import Image from 'next/image';
 import { ChevronLeft, ChevronRight } from 'lucide-react';
+import { useCarouselDimensions, type SingleCarouselOpts } from '@/hooks/useCarouselDimensions';
 
-// Original image paths from your example
 const images = [
   '/remedya/5.jpg',
   '/remedya/1.jpg',
@@ -13,30 +13,35 @@ const images = [
   '/remedya/4.jpg',
 ];
 
-// Configuration for image dimensions and layout from your snippet
-const IMAGE_ASPECT_RATIO_W = 2;
-const IMAGE_ASPECT_RATIO_H = 1;
-const IMAGE_BASE_WIDTH = 600;
+const GAP = 16;
 
-const IMAGE_WIDTH = IMAGE_BASE_WIDTH;
-const IMAGE_HEIGHT = (IMAGE_BASE_WIDTH / IMAGE_ASPECT_RATIO_W) * IMAGE_ASPECT_RATIO_H;
-const IMAGES_PER_VIEW = 1;
-const GAP = 16; // Gap between images in pixels
+const CAROUSEL_OPTS: SingleCarouselOpts = {
+  mode: 'single',
+  maxSlideWidth: 600,
+  aspectW: 2,
+  aspectH: 1,
+};
 
 const ImageCarousel = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [isAnimating, setIsAnimating] = useState(false);
+  const containerRef = useRef<HTMLDivElement>(null);
+  const { slideWidth, slideHeight, imagesPerView: IMAGES_PER_VIEW } = useCarouselDimensions(
+    containerRef,
+    GAP,
+    CAROUSEL_OPTS,
+  );
 
-  const animationDuration = 500; // Corresponds to 'transform 0.5s'
+  const animationDuration = 500;
 
   const handlePrev = () => {
-    if (isAnimating || currentIndex === 0) return; // Prevent action if animating or at boundary
+    if (isAnimating || currentIndex === 0) return;
     setIsAnimating(true);
     setCurrentIndex((prev) => prev - 1);
   };
 
   const handleNext = () => {
-    if (isAnimating || currentIndex >= images.length - IMAGES_PER_VIEW) return; // Prevent action if animating or at boundary
+    if (isAnimating || currentIndex >= images.length - IMAGES_PER_VIEW) return;
     setIsAnimating(true);
     setCurrentIndex((prev) => prev + 1);
   };
@@ -45,36 +50,39 @@ const ImageCarousel = () => {
     if (isAnimating || currentIndex === dotIndex) return;
     setIsAnimating(true);
     setCurrentIndex(dotIndex);
-};
+  };
 
   const handleTransitionEnd = () => {
     setIsAnimating(false);
   };
 
-  const numPages = images.length > 0 ? Math.max(0, images.length - IMAGES_PER_VIEW + 1) : 0;
-  const translateXValue = -currentIndex * (IMAGE_WIDTH + GAP);
-  const viewportWidth = IMAGES_PER_VIEW * IMAGE_WIDTH + (IMAGES_PER_VIEW - 1) * GAP;
+  useEffect(() => {
+    const maxIdx = Math.max(0, images.length - IMAGES_PER_VIEW);
+    setCurrentIndex((i) => Math.min(i, maxIdx));
+  }, [IMAGES_PER_VIEW]);
+
+  const numPages =
+    images.length > 0 ? Math.max(0, images.length - IMAGES_PER_VIEW + 1) : 0;
+  const translateXValue = -currentIndex * (slideWidth + GAP);
 
   const isPrevDisabledBoundary = currentIndex === 0;
-  const isNextDisabledBoundary = currentIndex >= images.length - IMAGES_PER_VIEW || images.length <= IMAGES_PER_VIEW;
+  const isNextDisabledBoundary =
+    currentIndex >= images.length - IMAGES_PER_VIEW || images.length <= IMAGES_PER_VIEW;
 
   return (
-    <div className="flex flex-col items-center w-full max-w-4xl mx-auto mt-8">
-      <div className="relative flex items-center justify-center w-full">
+    <div className="mx-auto mt-8 flex w-full max-w-4xl flex-col items-center px-1">
+      <div className="relative flex w-full items-center justify-center px-8 sm:px-10">
         <button
+          type="button"
           onClick={handlePrev}
           disabled={isPrevDisabledBoundary}
-          className="absolute left-0 z-20 p-2 bg-white/80 hover:bg-white rounded-full shadow-md disabled:opacity-30 disabled:hover:bg-white/80"
-          style={{ top: '50%', transform: `translateY(-50%) translateX(-40%)` }}
+          className="absolute left-0 top-1/2 z-20 -translate-y-1/2 rounded-full bg-white/80 p-2 shadow-md hover:bg-white disabled:opacity-30 disabled:hover:bg-white/80"
           aria-label="Previous image"
         >
-          <ChevronLeft size={32} className="text-neutral-800"/>
+          <ChevronLeft size={28} className="text-neutral-800 sm:h-8 sm:w-8" />
         </button>
 
-        <div
-          className="overflow-hidden rounded-lg"
-          style={{ width: `${viewportWidth}px` }}
-        >
+        <div ref={containerRef} className="mx-auto w-full max-w-full overflow-hidden rounded-lg">
           <div
             className="flex"
             style={{
@@ -88,17 +96,17 @@ const ImageCarousel = () => {
                 key={src}
                 className="relative flex-shrink-0"
                 style={{
-                  width: `${IMAGE_WIDTH}px`,
-                  height: `${IMAGE_HEIGHT}px`,
+                  width: `${slideWidth}px`,
+                  height: `${slideHeight}px`,
                   marginRight: index < images.length - 1 ? `${GAP}px` : '0px',
                 }}
               >
                 <Image
                   src={src}
                   alt={`Image ${index + 1}`}
-                  layout="fill"
-                  objectFit="cover"
-                  className="rounded-md shadow-md"
+                  fill
+                  className="rounded-md object-cover shadow-md"
+                  sizes="(max-width: 768px) 100vw, 600px"
                   priority={index >= currentIndex && index < currentIndex + IMAGES_PER_VIEW}
                 />
               </div>
@@ -107,29 +115,28 @@ const ImageCarousel = () => {
         </div>
 
         <button
+          type="button"
           onClick={handleNext}
           disabled={isNextDisabledBoundary}
-          className="absolute right-0 z-20 p-2 bg-white/80 hover:bg-white rounded-full shadow-md disabled:opacity-30 disabled:hover:bg-white/80"
-          style={{ top: '50%', transform: `translateY(-50%) translateX(40%)` }}
+          className="absolute right-0 top-1/2 z-20 -translate-y-1/2 rounded-full bg-white/80 p-2 shadow-md hover:bg-white disabled:opacity-30 disabled:hover:bg-white/80"
           aria-label="Next image"
         >
-          <ChevronRight size={32} className="text-neutral-800"/>
+          <ChevronRight size={28} className="text-neutral-800 sm:h-8 sm:w-8" />
         </button>
       </div>
 
-      {/* Dots Indicator */}
       {numPages > 1 && (
-        <div className="flex justify-center mt-6 space-x-2">
+        <div className="mt-6 flex justify-center space-x-2">
           {Array.from({ length: numPages }).map((_, dotIndex) => (
             <button
               key={dotIndex}
+              type="button"
               onClick={() => handleDotClick(dotIndex)}
-              className={`w-2 h-2 rounded-full transition-all duration-300 ease-in-out
-                ${ currentIndex === dotIndex
-                    ? 'bg-white scale-125'
-                    : 'bg-white/20 hover:bg-white/40'
-                }
-              `}
+              className={`h-2 w-2 rounded-full transition-all duration-300 ease-in-out ${
+                currentIndex === dotIndex
+                  ? 'scale-125 bg-white'
+                  : 'bg-white/20 hover:bg-white/40'
+              }`}
               aria-label={`Go to image group ${dotIndex + 1}`}
             />
           ))}

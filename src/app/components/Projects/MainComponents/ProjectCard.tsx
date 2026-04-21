@@ -80,11 +80,11 @@ const ProjectCard = ({
               {PROJECT_CATEGORY_META[category].label}
             </p>
           ) : null}
-          <div className="flex items-center ">
-          <h3 className="text-2xl font-semibold text-white mr-4 ">
+          <div className="flex flex-wrap items-center gap-x-4 gap-y-2">
+          <h3 className="text-xl font-semibold text-white sm:text-2xl">
             {title}
           </h3>
-          <div className="flex items-center">
+          <div className="flex flex-wrap items-center gap-1">
           {telegramUrl && (
               <a
                 href={telegramUrl}
@@ -217,23 +217,25 @@ const ProjectCard = ({
           <div
             ref={interactiveRef}
             className={`
-              relative
+              relative flex flex-col gap-2 pt-2
               transition-all duration-500 ease-in-out
+              sm:gap-0 sm:pt-0
               ${animate ? 'opacity-100 scale-100' : 'opacity-0 scale-95'}
             `}
             style={{ transformOrigin: 'top' }}
           >
-            {/* Reset Button */}
-            <button
-              onClick={handleResetClick}
-              className="absolute -top-12 right-0 z-10 text-white p-3 hover:text-white/10 rounded-bl-lg transition-colors"
-              title="Reset"
-            >
-              <FaRedo className="text-xl" />
-            </button>
+            <div className="flex w-full shrink-0 justify-end sm:absolute sm:-top-12 sm:right-0 sm:z-10">
+              <button
+                type="button"
+                onClick={handleResetClick}
+                className="p-3 text-white transition-colors hover:text-white/70 sm:rounded-bl-lg sm:hover:text-white/10"
+                title="Reset"
+              >
+                <FaRedo className="text-xl" />
+              </button>
+            </div>
 
-            {/* Interactive Component */}
-            {interactiveComponent}
+            <div className="min-w-0 flex-1">{interactiveComponent}</div>
           </div>
         )}
       </div>

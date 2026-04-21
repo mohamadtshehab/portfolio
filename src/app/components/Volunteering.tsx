@@ -1,5 +1,5 @@
 'use client';
-import { FaMicrophone, FaShareAlt } from 'react-icons/fa';
+import { FaMicrophone } from 'react-icons/fa';
 import { BiBookOpen } from 'react-icons/bi';
 import React, {useState } from 'react';
 // --- HELPER FUNCTION ---
@@ -68,18 +68,6 @@ const volunteerRoles: VolunteerRole[] = [
         author: 'Mayassah, Listener',
         original: 'كتيييير خارقة الحلقة 🔥🔥🔥 يعطيكم العافية ❤️❤️❤️',
         translation: `That episode was so good 🔥🔥🔥 God bless you ❤️❤️❤️`
-      },
-    ]
-  },
-  {
-    title: 'Social Media Manager',
-    description: 'Managed and created content for the organization\'s social media platforms, increasing engagement and visibility.',
-    icon: <FaShareAlt className="text-4xl" />,
-    reactions: [
-       {
-        author: 'Lora, Chief Social Media Manager',
-        original: 'كتير لطيف البوست يعطيك العافية يا رب',
-        translation: 'The post is very nice. May God give you strength.'
       },
     ]
   },

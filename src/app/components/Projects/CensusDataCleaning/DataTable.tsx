@@ -28,8 +28,8 @@ interface Props {
 
 const CensusDataTable: React.FC<Props> = ({ data, rowRefs, tableRef, rowHighlights }) => {
   return (
-    <div ref={tableRef} className="relative">
-      <table className="min-w-full bg-white/10 rounded-lg">
+    <div ref={tableRef} className="relative max-w-full overflow-x-auto">
+      <table className="min-w-max bg-white/10 rounded-lg">
         <thead className="bg-white/20">
           <tr>
             <th className="px-4 py-2 text-left text-white">ID</th>

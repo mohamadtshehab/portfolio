@@ -38,8 +38,8 @@ interface Props {
 
 const SampleMusicDataTable: React.FC<Props> = ({ data, rowRefs, tableRef }) => {
   return (
-    <div ref={tableRef} className="relative">
-      <table className="min-w-full bg-white/10 rounded-lg">
+    <div ref={tableRef} className="relative max-w-full overflow-x-auto">
+      <table className="min-w-max bg-white/10 rounded-lg">
         <thead className="bg-white/20">
           <tr>
             <th className="px-4 py-2 text-white text-left">Artist Name</th>

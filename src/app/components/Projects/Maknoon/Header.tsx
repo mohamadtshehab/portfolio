@@ -30,11 +30,11 @@ const Header = ({ onToggleSidebar, hasFinishedReading, showNote = false }: Heade
     }, [hasFinishedReading, showNote]);
 
     return (
-        <header className="flex-shrink-0 flex items-center justify-between whitespace-nowrap border-b border-neutral-200 px-10 py-3">
+        <header className="flex shrink-0 items-center justify-between gap-2 border-b border-neutral-200 px-3 py-3 sm:px-6 md:px-10">
             <div className="relative group">
                 <button
                     onClick={onToggleSidebar}
-                    className="p-2 rounded-md hover:bg-neutral-100 transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
+                    className="rounded-md p-2 transition-colors hover:bg-neutral-100 disabled:cursor-not-allowed disabled:opacity-50"
                     aria-label="Toggle sidebar"
                     disabled={!hasFinishedReading}
                 >
@@ -44,29 +44,29 @@ const Header = ({ onToggleSidebar, hasFinishedReading, showNote = false }: Heade
                 {showTooltip && (
                     <div
                         onClick={() => setShowTooltip(false)}
-                        // 👇 MODIFIED: Removed vertical centering and aligned to the top of the button's container.
-                        className="absolute left-full top-0 z-10 w-72 rounded-lg bg-theme-100 text-white text-xs px-4 py-3 shadow-lg cursor-pointer whitespace-normal break-words"
+                        className="absolute left-1/2 top-full z-10 mt-2 w-[min(18rem,calc(100vw-2rem))] -translate-x-1/2 cursor-pointer rounded-lg bg-theme-100 px-4 py-3 text-xs text-white shadow-lg sm:left-full sm:top-0 sm:ml-3 sm:mt-0 sm:w-72 sm:translate-x-0 sm:translate-y-0"
                     >
                         {tooltipMode === 'pre' ? (
                             <>
-                                <p className="font-semibold mb-1">Keep reading 📖</p>
+                                <p className="mb-1 font-semibold">Keep reading 📖</p>
                                 <p>Characters and the character network unlock after you finish the story.</p>
                             </>
                         ) : (
                             <>
-                                <p className="font-semibold mb-1">Unlocked 🎉</p>
+                                <p className="mb-1 font-semibold">Unlocked 🎉</p>
                                 <p>You can now open the sidebar to explore characters and the network.</p>
                             </>
                         )}
-                        {/* 👇 MODIFIED: Repositioned arrow from the vertical middle to the top. */}
-                        <div className="absolute top-3.5 -left-1 w-3 h-3 bg-theme-100 rotate-45" />
+                        <div className="absolute -top-1.5 left-1/2 hidden h-3 w-3 -translate-x-1/2 rotate-45 bg-theme-100 sm:left-3 sm:top-3.5 sm:block sm:translate-x-0" />
                     </div>
                 )}
             </div>
 
-            <h1 className="text-lg font-bold">The Avengers&apos; Tale</h1>
+            <h1 className="min-w-0 flex-1 text-center text-sm font-bold leading-tight sm:text-base md:text-lg">
+                The Avengers&apos; Tale
+            </h1>
             <div
-                className="bg-center bg-no-repeat aspect-square bg-cover rounded-full size-10"
+                className="aspect-square size-9 shrink-0 rounded-full bg-cover bg-center bg-no-repeat sm:size-10"
                 style={{ backgroundImage: 'url("https://source.unsplash.com/random/100x100?person")' }}
             />
         </header>

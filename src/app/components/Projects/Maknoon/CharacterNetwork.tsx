@@ -114,9 +114,9 @@ const CharacterNetwork: FC<CharacterNetworkProps> = ({ elements, onClose }) => {
   ];
 
   return (
-    <div className="fixed inset-0 z-50 bg-theme-100 animate-fadeIn flex flex-col">
+    <div className="fixed inset-0 z-50 flex animate-fadeIn flex-col bg-theme-100">
        {/* Header with Back Button */}
-      <div className="p-8 pb-0">
+      <div className="p-4 pb-0 sm:p-8 sm:pb-0">
          <button
           onClick={onClose}
           className="custom-button"
@@ -127,7 +127,7 @@ const CharacterNetwork: FC<CharacterNetworkProps> = ({ elements, onClose }) => {
       </div>
 
        {/* Cytoscape Container */}
-      <div className="flex-1 p-8">
+      <div className="flex min-h-[200px] flex-1 flex-col p-4 sm:min-h-[260px] sm:p-8">
         <CytoscapeComponent
           elements={elements}
           stylesheet={stylesheet}

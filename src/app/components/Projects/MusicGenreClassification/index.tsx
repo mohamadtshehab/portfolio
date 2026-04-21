@@ -30,7 +30,7 @@ const MusicGenreClassification = () => {
     return (
         <div className="relative ">
           <div className="relative w-full ">
-            <div className="overflow-x-auto custom-scrollbar roun">
+            <div className="custom-scrollbar overflow-x-auto rounded-lg">
 
               <SampleMusicDataTable
                 data={sampleMusicData}

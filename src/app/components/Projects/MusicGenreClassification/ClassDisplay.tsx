@@ -12,13 +12,13 @@ const ClassDisplay: React.FC<Props> = ({ predictedClass, isAnimated }) => {
 
   return (
     <div
-      className={`w-full mt-2 transition-all duration-700 ${
+      className={`mt-2 w-full max-w-full transition-all duration-700 ${
         isAnimated ? 'translate-y-0 opacity-100' : 'translate-y-[-30px] opacity-0'
       }`}
       style={{ transformOrigin: 'top' }}
     >
       <h4 className="text-white font-semibold mb-2">Predicted Class:</h4>
-      <div className="analysis-result">
+      <div className="analysis-result max-w-full overflow-x-auto">
         <SyntaxHighlighter
           language="plaintext"
           style={atomOneDark}

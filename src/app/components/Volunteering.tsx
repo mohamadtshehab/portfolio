@@ -32,7 +32,8 @@ interface VolunteerCardProps extends VolunteerRole {
 const volunteerRoles: VolunteerRole[] = [
     {
     title: 'NLP Course Team Leader',
-    description: 'Led the first volunteer-created NLP course, making complex AI concepts accessible and engaging for over 100 senior students.',
+    description:
+      "Led the team's first volunteer-created NLP course, making complex AI concepts accessible for over 100 senior students.",
     icon: <BiBookOpen className="text-4xl" />,
     reactions: [
       {
@@ -56,7 +57,7 @@ const volunteerRoles: VolunteerRole[] = [
   },
   {
     title: 'Podcast Host & Creator',
-    description: 'Launched and produced a 12-episode podcast on AI, creative problem-solving, and personal development for a growing audience.',
+    description: 'Launched a 12-episode podcast on AI, problem-solving, and life lessons.',
     icon: <FaMicrophone className="text-4xl" />,
     reactions: [
        {

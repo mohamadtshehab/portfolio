@@ -2,8 +2,10 @@
 
 import { useState, useEffect } from 'react';
 import Image from 'next/image';
-import { motion, AnimatePresence } from 'framer-motion';
+import { motion, AnimatePresence, useReducedMotion } from 'framer-motion';
 import certificates from './certificatesInfo';
+
+const modalEaseOut = [0.22, 1, 0.36, 1] as const;
 
 interface Certificate {
   title: string;
@@ -17,15 +19,31 @@ interface Certificate {
 
 const Certificates = () => {
   const [selectedCert, setSelectedCert] = useState<Certificate | null>(null);
+  const reduceMotion = useReducedMotion();
+
+  const panelTransition =
+    reduceMotion !== null && reduceMotion
+      ? { duration: 0 }
+      : { duration: 0.22, ease: modalEaseOut };
 
   useEffect(() => {
-    if (selectedCert) {
-      document.body.style.overflow = 'hidden';
-    } else {
+    if (!selectedCert) {
       document.body.style.overflow = '';
+      return;
     }
+
+    document.body.style.overflow = 'hidden';
+
+    const onKeyDown = (e: KeyboardEvent) => {
+      if (e.key === 'Escape') {
+        setSelectedCert(null);
+      }
+    };
+    window.addEventListener('keydown', onKeyDown);
+
     return () => {
       document.body.style.overflow = '';
+      window.removeEventListener('keydown', onKeyDown);
     };
   }, [selectedCert]);
 
@@ -36,15 +54,20 @@ const Certificates = () => {
           <h2 className="mb-12 text-center text-4xl font-bold text-white">My Certificates</h2>
           <div className="grid grid-cols-1 gap-4 min-[480px]:grid-cols-2 md:grid-cols-3 md:gap-6 lg:grid-cols-4">
             {certificates.map(cert => (
-              <motion.div
+              <div
                 key={cert.title}
-                layoutId={`card-${cert.title}`}
                 className="group relative cursor-pointer overflow-hidden rounded-lg shadow-lg"
+                role="button"
+                tabIndex={0}
                 onClick={() => setSelectedCert(cert)}
+                onKeyDown={e => {
+                  if (e.key === 'Enter' || e.key === ' ') {
+                    e.preventDefault();
+                    setSelectedCert(cert);
+                  }
+                }}
               >
-                <motion.div
-                  className="transition-transform duration-300 ease-in-out group-hover:scale-105"
-                >
+                <div className="transition-transform duration-300 ease-in-out group-hover:scale-105">
                   <Image
                     src={cert.image}
                     alt={cert.title}
@@ -52,13 +75,13 @@ const Certificates = () => {
                     height={280}
                     className="h-full w-full object-cover"
                   />
-                </motion.div>
+                </div>
                 <div className="absolute inset-0 flex items-center justify-center bg-black/60 opacity-0 transition-opacity duration-300 group-hover:opacity-90">
                   <svg xmlns="http://www.w3.org/2000/svg" className="h-10 w-10 text-white/90" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
                     <path strokeLinecap="round" strokeLinejoin="round" d="M3.75 3.75v4.5m0-4.5h4.5m-4.5 0L9 9M3.75 20.25v-4.5m0 4.5h4.5m-4.5 0L9 15M20.25 3.75h-4.5m4.5 0v4.5m0-4.5L15 9m4.5 11.25h-4.5m4.5 0v-4.5m0 4.5L15 15" />
                   </svg>
                 </div>
-              </motion.div>
+              </div>
             ))}
           </div>
         </div>
@@ -66,26 +89,26 @@ const Certificates = () => {
 
       <AnimatePresence>
         {selectedCert && (
-          // Backdrop
           <motion.div
-            className="fixed inset-0 z-50 flex items-center justify-center bg-theme p-4"
+            key="cert-backdrop"
+            className="fixed inset-0 z-50 flex items-center justify-center bg-theme/[0.96] p-4"
             onClick={() => setSelectedCert(null)}
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
+            transition={{ duration: reduceMotion ? 0 : 0.18 }}
           >
             <motion.div
-              layoutId={`card-${selectedCert.title}`}
+              key={selectedCert.title}
+              layout={false}
               className="max-h-[90vh] w-full max-w-3xl overflow-y-auto rounded-lg bg-white/10 shadow-2xl custom-scrollbar"
               onClick={e => e.stopPropagation()}
-              transition={{ duration: 0.5, ease: 'easeOut' }}
+              initial={{ opacity: 0, y: 12 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: 8 }}
+              transition={panelTransition}
             >
-              <motion.div
-                className="p-6 md:p-8"
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1, transition: { delay: 0.1, duration: 0.4 } }}
-                exit={{ opacity: 0, transition: { duration: 0.15 } }}
-              >
+              <div className="p-6 md:p-8">
                 <div className="mb-4 flex items-start justify-between">
                   <h2 className="text-2xl font-bold text-white/70 dark:text-white md:text-3xl">{selectedCert.title}</h2>
                   <button
@@ -99,7 +122,8 @@ const Certificates = () => {
                   </button>
                 </div>
                 <p className="mb-1 text-lg text-white/70 dark:text-gray-300">{selectedCert.institution}</p>
-                <p className="mb-6 text-sm text-white/70 dark:text-gray-400">{selectedCert.date}</p>
+                <p className="mb-4 text-sm text-white/70 dark:text-gray-400">{selectedCert.date}</p>
+                <p className="mb-6 text-base text-white/70 dark:text-gray-300">{selectedCert.description}</p>
                 <div className="mb-6">
                   <Image
                     src={selectedCert.image}
@@ -121,8 +145,6 @@ const Certificates = () => {
                   </div>
                 </div>
 
-                <p className="mb-6 text-base text-white/70 dark:text-gray-300">{selectedCert.description}</p>
-                
                 <div className="flex justify-center mt-8">
                   <a
                     href={selectedCert.courseraUrl}
@@ -136,7 +158,7 @@ const Certificates = () => {
                     Verify Certificate
                   </a>
                 </div>
-              </motion.div>
+              </div>
             </motion.div>
           </motion.div>
         )}

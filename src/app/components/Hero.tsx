@@ -60,7 +60,7 @@ const Hero = () => {
             repeat={Infinity}
           />
          <p className="max-w-xl text-lg text-white/70 mb-8">
-  Glad you&apos;re here. This portfolio was built with the same attention to detail I apply to my projects. Go ahead, click around, and you might be surprised by what you find.
+  Here, you can try my work first hand. Go ahead, click around, and you might be surprised by what you find.
 </p>
           {/* CTA and Socials */}
           <div className="flex items-center justify-center md:justify-start gap-4">
@@ -70,11 +70,23 @@ const Hero = () => {
 >
   View My Work
 </a>
-            <a href="https://github.com/mohamadtshehab" target="_blank" rel="noopener noreferrer" className="text-3xl text-white/70 hover:text-white transition-colors">
-              <FaGithub />
+            <a
+              href="https://github.com/mohamadtshehab"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-3xl text-white/70 hover:text-white transition-colors"
+              aria-label="Mohamad Shehab on GitHub"
+            >
+              <FaGithub aria-hidden />
             </a>
-            <a href="https://www.linkedin.com/in/mohamad-shehab-493121279" target="_blank" rel="noopener noreferrer" className="text-3xl text-white/70 hover:text-white transition-colors">
-              <FaLinkedin />
+            <a
+              href="https://www.linkedin.com/in/mohamad-shehab-493121279"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-3xl text-white/70 hover:text-white transition-colors"
+              aria-label="Mohamad Shehab on LinkedIn"
+            >
+              <FaLinkedin aria-hidden />
             </a>
           </div>
         </motion.div>
@@ -105,12 +117,14 @@ const Hero = () => {
         </motion.div>
       </div>
 
-<motion.div 
-  className="absolute bottom-10 left-1/2 -translate-x-1/2 z-10"
-  whileHover={{ scale: 1.2, y: -5 }} // Add a subtle hover effect
+<motion.a
+  href="#about"
+  aria-label="Continue to About section"
+  className="absolute bottom-10 left-1/2 z-10 -translate-x-1/2 rounded-full text-white/50 outline-none ring-offset-2 ring-offset-[#0a1a1c] transition-colors hover:text-white/80 focus-visible:ring-2 focus-visible:ring-teal-300/60"
+  whileHover={{ scale: 1.2, y: -5 }}
 >
-  <HiOutlineArrowDown className="text-3xl text-white/50 animate-bounce" />
-</motion.div>
+  <HiOutlineArrowDown className="text-3xl animate-bounce" aria-hidden />
+</motion.a>
     </section>
   );
 };

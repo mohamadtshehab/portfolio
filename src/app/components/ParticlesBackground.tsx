@@ -1,11 +1,21 @@
 "use client";
 
-import { useCallback } from "react";
+import { useCallback, useEffect, useState } from "react";
 import Particles from "react-tsparticles";
 import { loadSlim } from "tsparticles-slim";
-import type {Engine } from "tsparticles-engine";
+import type { Engine } from "tsparticles-engine";
 
 const ParticlesBackground = () => {
+  const [showParticles, setShowParticles] = useState(false);
+
+  useEffect(() => {
+    const mq = window.matchMedia("(prefers-reduced-motion: reduce)");
+    const sync = () => setShowParticles(!mq.matches);
+    sync();
+    mq.addEventListener("change", sync);
+    return () => mq.removeEventListener("change", sync);
+  }, []);
+
   const particlesInit = useCallback(async (engine: Engine) => {
     await loadSlim(engine);
   }, []);
@@ -13,6 +23,8 @@ const ParticlesBackground = () => {
   const particlesLoaded = useCallback(async () => {
     // Optional: Add any additional setup after particles are loaded
   }, []);
+
+  if (!showParticles) return null;
 
   return (
     <Particles
@@ -25,7 +37,7 @@ const ParticlesBackground = () => {
             value: "transparent",
           },
         },
-        fpsLimit: 120,
+        fpsLimit: 60,
         interactivity: {
           events: {
             onClick: {
@@ -61,9 +73,9 @@ const ParticlesBackground = () => {
           number: {
             density: {
               enable: true,
-              area: 800,
+              area: 900,
             },
-            value: 80,
+            value: 55,
           },
           opacity: {
             value: 0.5,

@@ -10,7 +10,8 @@ export interface WorkRole {
   company: string;
   location?: string;
   period: string;
-  highlights: string[];
+  /** Bullet points; omit or leave empty to hide the list. */
+  highlights?: string[];
   /**
    * Image path under `/public`, e.g. `/work-logos/attentive.png`.
    * When set, this is shown instead of the briefcase (or `icon`).
@@ -53,10 +54,10 @@ const workRoles: WorkRole[] = [
     location: "United States (Remote)",
     period: "Oct 2025 – Present",
     highlights: [
-      "Built end-to-end workflow automation with Python and Playwright to save investigation time by aggregating diagnostic data across Zendesk, Datadog, Looker, and client websites for an AI-powered marketing platform.",
-      "Implemented, configured, and validated custom TypeScript for event tracking and analytics aggregation across Fortune 500 client websites (e.g. Samsung, Victoria's Secret, and Dior).",
-      "Debugged enterprise client-side tracking (event schemas, data layers, cross-platform analytics), resolved e-commerce integration issues, and refined sign-up unit and banner logic.",
-      "Communicated with client representatives across email, chat, and calls to align on requirements and close integration gaps.",
+      "Automated end-to-end investigation workflows with LangGraph and Playwright.",
+      "Implemented and validated TypeScript event tracking across major US and international retail sites (e.g. Wayfair, Samsung).",
+      "Debugged client-side tracking, e-commerce integrations, and signup unit / banner behavior.",
+      "Aligned with client stakeholders to clarify requirements and close integration gaps.",
     ],
     logoSrc: "/work-logos/attentive.png",
   },
@@ -66,7 +67,7 @@ const workRoles: WorkRole[] = [
     location: "Jordan (Remote)",
     period: "Mar 2024 – Aug 2024",
     highlights: [
-      "Collaborated on two machine learning projects: Diamond Pricing Prediction (7th place with an ensemble model) and Music Genre Classification (automated genre recognition).",
+      "Collaborated on two machine learning projects: Diamond Pricing Prediction and Music Genre Classification.",
       "Worked on multiple BI tasks including Power BI, Pandas, NumPy, and Seaborn.",
     ],
     logoSrc: "/work-logos/shai.jpeg",
@@ -76,10 +77,6 @@ const workRoles: WorkRole[] = [
     company: "Nakkash Tech Store",
     location: "Lebanon · During High School",
     period: "Jul 2017 – Nov 2019",
-    highlights: [
-      "Managed technical troubleshooting for mobile phones and laptops.",
-      "Ran store operations including inventory and cash handling, maintaining performance across varied schedules and high-pressure peak hours.",
-    ],
     // logoSrc: "/work-logos/nakkash.png",
   },
 ];
@@ -155,23 +152,25 @@ const WorkExperience = () => {
                       {role.period}
                     </p>
                   </div>
-                  <ul className="list-outside list-disc space-y-2 pl-6 text-white/80 leading-relaxed marker:text-white/45 sm:pl-14">
-                    {role.highlights.map((item, i) => (
-                      <motion.li
-                        key={i}
-                        initial={{ opacity: 0, x: -8 }}
-                        whileInView={{ opacity: 1, x: 0 }}
-                        viewport={{ once: true }}
-                        transition={{
-                          duration: 0.35,
-                          delay: 0.12 + i * 0.05,
-                          ease: "easeOut",
-                        }}
-                      >
-                        {item}
-                      </motion.li>
-                    ))}
-                  </ul>
+                  {role.highlights && role.highlights.length > 0 ? (
+                    <ul className="list-outside list-disc space-y-2 pl-6 text-white/80 leading-relaxed marker:text-white/45 sm:pl-14">
+                      {role.highlights.map((item, i) => (
+                        <motion.li
+                          key={i}
+                          initial={{ opacity: 0, x: -8 }}
+                          whileInView={{ opacity: 1, x: 0 }}
+                          viewport={{ once: true }}
+                          transition={{
+                            duration: 0.35,
+                            delay: 0.12 + i * 0.05,
+                            ease: "easeOut",
+                          }}
+                        >
+                          {item}
+                        </motion.li>
+                      ))}
+                    </ul>
+                  ) : null}
                 </div>
               </div>
             </motion.div>

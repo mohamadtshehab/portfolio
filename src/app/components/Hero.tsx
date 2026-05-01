@@ -60,7 +60,7 @@ const Hero = () => {
             repeat={Infinity}
           />
          <p className="max-w-xl text-lg text-white/70 mb-8">
-         I&apos;m glad you&apos;re here. Here you can try my work first hand.
+         I&apos;m glad you&apos;re here. Below, you can try my work first-hand.
 </p>
           {/* CTA and Socials */}
           <div className="flex items-center justify-center md:justify-start gap-4">

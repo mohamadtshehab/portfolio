@@ -79,12 +79,6 @@ const Contact = () => {
                 iammohamadshehab@gmail.com
               </a>
             </div>
-            <div className="flex items-center space-x-4 text-gray-300">
-              <FaPhone className="text-2xl" />
-              <a href="tel:+963994416998" className="hover:text-white">
-                +963 994 416 998
-              </a>
-            </div>
             <div className="text-gray-300">
               <p>Damascus, Syria</p>
             </div>

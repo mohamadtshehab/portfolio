@@ -10,34 +10,67 @@ interface SkillCategory {
 
 const skillCategories: SkillCategory[] = [
   {
-    name: 'Agents & AI',
-    icon: <FaRobot className="text-4xl" />,
-    skills: ['LangGraph', 'LangChain', 'LangSmith', 'LLMs', 'TensorFlow', 'Keras', 'PyTorch', 'Scikit-Learn', 'Prompt Engineering']
-  },
-  {
-    name: 'Web & Backend Development',
-    icon: <CgWebsite className="text-4xl" />,
-    skills: ['Django', 'Flask', 'Laravel', 'REST APIs', 'MySQL', 'Asynchronous Programming', 'WebSocket APIs', 'Celery', 'Redis']
-  },
-  {
-    name: 'Data Science',
-    icon: <BiData className="text-4xl" />,
-    skills: ['Pandas', 'NumPy', 'Matplotlib', 'Seaborn', 'Power BI']
-  },
-  {
-    name: 'Deployment & Automation',
-    icon: <FaCogs className="text-4xl" />,
-    skills: ['Docker', 'HuggingFace', 'Microsoft Azure', 'n8n', 'Google Cloud']
-  },
-  {
-    name: 'Programming',
+    name: 'Programming Languages',
     icon: <FaPython className="text-4xl" />,
-    skills: ['Python', 'Java', 'SQL', 'Git']
+    skills: ['Python', 'SQL'],
   },
   {
-    name: 'Soft Skills',
+    name: 'AI & Machine Learning',
+    icon: <FaRobot className="text-4xl" />,
+    skills: [
+      'LangGraph',
+      'LangChain',
+      'LLMs',
+      'TensorFlow',
+      'Keras',
+      'PyTorch',
+      'Scikit-Learn',
+      'Prompt Engineering',
+      'Vector DBs',
+    ],
+  },
+  {
+    name: 'Data Science & Analytics',
+    icon: <BiData className="text-4xl" />,
+    skills: ['Pandas', 'NumPy', 'Matplotlib', 'Seaborn', 'Plotly', 'Power BI', 'DataDog', 'Looker'],
+  },
+  {
+    name: 'Web Development',
+    icon: <CgWebsite className="text-4xl" />,
+    skills: [
+      'Django',
+      'Fast API',
+      'Flask',
+      'PlayWright',
+      'Laravel',
+      'REST APIs',
+      'Asynchronous Programming',
+      'WebSocket',
+      'Webhooks',
+      'Message Brokers (Pub/Sub, Celery, Redis)',
+      'NoSQL',
+    ],
+  },
+  {
+    name: 'Infrastructure & Tools',
+    icon: <FaCogs className="text-4xl" />,
+    skills: [
+      'CI/CD',
+      'Docker',
+      'Git',
+      'HuggingFace',
+      'Microsoft Azure',
+      'Google Cloud',
+      'n8n',
+      'MySQL',
+      'PyTest',
+      'Unittest',
+    ],
+  },
+  {
+    name: 'Spoken Languages',
     icon: <FaUsers className="text-4xl" />,
-    skills: ['Leadership', 'Project Management', 'Research', 'Teamwork', 'Consistent Learning', 'Arabic (Native)', 'English (Advanced)']
+    skills: ['Arabic (Native)', 'English (Fluent)'],
   },
 ];
 

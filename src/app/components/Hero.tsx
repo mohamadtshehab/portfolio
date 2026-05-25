@@ -45,11 +45,9 @@ const Hero = () => {
           <h1 className="text-5xl md:text-7xl font-bold">Mohamad Shehab</h1>
           <TypeAnimation
             sequence={[
-              'AI Developer',
+              'AI Engineer',
               2000,
-              'Backend Developer',
-              2000,
-              'Data Analyst',
+              'Software Engineer',
               2000,
               'Lifelong Learner',
               2000,

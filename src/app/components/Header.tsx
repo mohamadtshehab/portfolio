@@ -66,12 +66,10 @@ export default function Header() {
   }, []);
 
   const navLinks = [
-    { href: "#about", label: "About Me" },
     { href: "#work-experience", label: "Work" },
     { href: "#skills", label: "Skills" },
     { href: "#projects", label: "Projects" },
     { href: "#certificates", label: "Certificates" },
-    { href: "#volunteering", label: "Volunteering" },
     { href: "#contact", label: "Contact" },
   ];
 
@@ -92,7 +90,7 @@ export default function Header() {
         />
       ) : null}
 
-      <div className="relative z-[55] mx-auto mt-3 max-w-[min(600px,calc(100%-1.5rem))] px-0 sm:mt-4">
+      <div className="relative z-[55] mx-auto mt-3 max-w-[min(740px,calc(100%-1.5rem))] px-0 sm:mt-4">
         <div
           className="flex flex-col overflow-hidden rounded-2xl shadow-lg md:rounded-full md:px-2 md:py-1"
           style={{

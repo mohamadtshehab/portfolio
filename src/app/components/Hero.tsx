@@ -1,7 +1,6 @@
 "use client";
 
 import { FaGithub, FaLinkedin } from 'react-icons/fa';
-import { HiOutlineArrowDown } from 'react-icons/hi';
 import Image from 'next/image';
 import { motion } from 'framer-motion';
 import { TypeAnimation } from 'react-type-animation';
@@ -116,14 +115,6 @@ const Hero = () => {
         </motion.div>
       </div>
 
-<motion.a
-  href="#work-experience"
-  aria-label="Continue to Work Experience section"
-  className="absolute bottom-10 left-1/2 z-10 -translate-x-1/2 rounded-full text-white/50 outline-none ring-offset-2 ring-offset-[#0a1a1c] transition-colors hover:text-white/80 focus-visible:ring-2 focus-visible:ring-teal-300/60"
-  whileHover={{ scale: 1.2, y: -5 }}
->
-  <HiOutlineArrowDown className="text-3xl animate-bounce" aria-hidden />
-</motion.a>
     </section>
   );
 };

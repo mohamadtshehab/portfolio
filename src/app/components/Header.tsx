@@ -90,7 +90,7 @@ export default function Header() {
         />
       ) : null}
 
-      <div className="relative z-[55] mx-auto mt-3 max-w-[min(500px,calc(100%-1.5rem))] px-0 sm:mt-4">
+      <div className="relative z-[55] mx-auto mt-3 max-w-[min(400px,calc(100%-1.5rem))] px-0 sm:mt-4">
         <div
           className="flex flex-col overflow-hidden rounded-2xl shadow-lg md:rounded-full md:px-1 md:py-0.5"
           style={{

@@ -90,9 +90,9 @@ export default function Header() {
         />
       ) : null}
 
-      <div className="relative z-[55] mx-auto mt-3 max-w-[min(600px,calc(100%-1.5rem))] px-0 sm:mt-4">
+      <div className="relative z-[55] mx-auto mt-3 max-w-[min(500px,calc(100%-1.5rem))] px-0 sm:mt-4">
         <div
-          className="flex flex-col overflow-hidden rounded-2xl shadow-lg md:rounded-full md:px-2 md:py-1"
+          className="flex flex-col overflow-hidden rounded-2xl shadow-lg md:rounded-full md:px-1 md:py-0.5"
           style={{
             backgroundColor: "rgba(9, 51, 54, 0.88)",
             backdropFilter: "blur(12px)",
@@ -128,7 +128,7 @@ export default function Header() {
                 key={link.label}
                 href={link.href}
                 onClick={closeMenu}
-                className={`rounded-xl px-3 py-2.5 text-center text-sm font-medium transition-colors duration-300 md:rounded-full md:py-2 ${
+                className={`rounded-xl px-3 py-2.5 text-center text-sm font-medium transition-colors duration-300 md:rounded-full md:px-2.5 md:py-1.5 ${
                   activeSection === link.href.substring(1)
                     ? "bg-white/10 text-white"
                     : "text-gray-300 hover:bg-white/5 hover:text-white md:hover:bg-transparent"

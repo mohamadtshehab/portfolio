@@ -93,6 +93,15 @@ const workRoles: WorkRole[] = [
     ],
     logoSrc: "/work-logos/shai.jpeg",
   },
+  {
+    title: "Technical Support & Operations Manager",
+    company: "Nakkash Tech Store",
+    location: "Lebanon",
+    period: "Jul 2017 – Nov 2019",
+    highlights: [
+      "Managed technical troubleshooting for mobile devices and led store operations, maintaining high performance during peak business hours.",
+    ],
+  },
 ];
 
 const WorkExperience = () => {

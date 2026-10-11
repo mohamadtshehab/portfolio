@@ -5,6 +5,7 @@ import Certificates from "./components/Courses/Certificates";
 import Hero from "./components/Hero";
 import Projects from "./components/Projects/MainComponents/Projects";
 import Skills from "./components/Skills";
+import Education from "./components/Education";
 
 export default function Home() {
   return (
@@ -15,6 +16,7 @@ export default function Home() {
         <Projects />
         <Certificates />
         <Skills />
+        <Education />
         <Contact />
       </div>
     </div>

@@ -1,0 +1,65 @@
+.demo {
+  min-width: 0;
+  border: 1px solid rgb(94 234 212 / 20%);
+  border-radius: 1rem;
+  background: linear-gradient(140deg, rgb(13 39 38 / 90%), rgb(7 21 25 / 95%));
+  padding: clamp(1rem, 3vw, 2rem);
+}
+
+.sample, .playButton {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: .5rem;
+  border-radius: .65rem;
+  font-size: .875rem;
+  line-height: 1.5;
+  cursor: pointer;
+  transition: background .2s, border-color .2s, color .2s;
+}
+
+.sample {
+  border: 1px solid rgb(255 255 255 / 15%);
+  background: rgb(255 255 255 / 3%);
+  padding: .65rem .85rem;
+  color: rgb(255 255 255 / 70%);
+  text-align: left;
+}
+
+.sample:hover { border-color: rgb(94 234 212 / 40%); color: white; }
+.sample.selected { border-color: rgb(94 234 212 / 55%); background: rgb(45 212 191 / 12%); color: #ccfbf1; }
+.demo button:focus-visible { outline: 2px solid #5eead4; outline-offset: 4px; }
+
+.steps { display: grid; grid-template-columns: 1fr; gap: .75rem; margin-bottom: 1.25rem; }
+.step { position: relative; min-width: 0; padding: 1rem; border: 1px solid rgb(255 255 255 / 10%); border-radius: .75rem; background: rgb(255 255 255 / 2%); transition: border-color .3s, background .3s; }
+.activeStep { border-color: rgb(94 234 212 / 65%); background: rgb(45 212 191 / 10%); box-shadow: 0 0 24px rgb(45 212 191 / 6%); }
+.doneStep { border-color: rgb(94 234 212 / 25%); }
+.stepNumber { display: flex; align-items: center; justify-content: center; width: 1.65rem; height: 1.65rem; border-radius: 50%; background: rgb(255 255 255 / 6%); font-size: .65rem; color: rgb(255 255 255 / 55%); }
+.activeStep .stepNumber, .doneStep .stepNumber { background: rgb(94 234 212 / 15%); color: #99f6e4; }
+.connector { display: none; }
+
+.player { min-width: 0; padding: 1.25rem; border: 1px solid rgb(255 255 255 / 10%); border-radius: .75rem; background: rgb(0 0 0 / 18%); }
+.statusIcon { display: flex; align-items: center; justify-content: center; flex-shrink: 0; width: 2.75rem; height: 2.75rem; border: 1px solid rgb(94 234 212 / 20%); border-radius: 50%; background: rgb(94 234 212 / 8%); color: #99f6e4; }
+.runningIcon { animation: pulse 2s ease-in-out infinite; }
+.waveform { display: flex; align-items: center; justify-content: center; gap: 3px; width: 100%; height: 6rem; margin-top: .5rem; overflow: hidden; }
+.bar { flex: 1; max-width: 7px; min-width: 1px; border-radius: 10px; background: rgb(255 255 255 / 14%); transition: background .2s; }
+.played { background: #5eead4; }
+.activeBar.played { box-shadow: 0 0 8px rgb(94 234 212 / 20%); }
+.playButton { background: #99f6e4; color: #0a2927; padding: .75rem 1rem; font-weight: 600; }
+.playButton:hover { background: #ccfbf1; }
+
+@keyframes pulse { 0%, 100% { opacity: 1; } 50% { opacity: .5; } }
+@media (min-width: 640px) {
+  .steps { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+@media (min-width: 900px) {
+  .steps { grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 1.5rem; }
+  .connector { display: block; position: absolute; right: -1.3rem; top: 50%; transform: translateY(-50%); color: rgb(255 255 255 / 25%); }
+}
+@media (max-width: 380px) {
+  .sample { width: 100%; }
+  .waveform { gap: 2px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .demo *, .demo *::before, .demo *::after { animation: none; transition: none; }
+}

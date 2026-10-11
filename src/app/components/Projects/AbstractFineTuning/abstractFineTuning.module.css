@@ -1,0 +1,80 @@
+.showcase {
+  min-width: 0;
+  padding: clamp(1rem, 2.5vw, 1.5rem);
+  border: 1px solid rgb(255 255 255 / 12%);
+  border-radius: .75rem;
+  background: rgb(255 255 255 / 2%);
+  color: white;
+}
+
+.toolbar {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: .75rem;
+  margin-bottom: 1.5rem;
+}
+
+.field {
+  display: grid;
+  width: 100%;
+  max-width: 21rem;
+  gap: .45rem;
+}
+
+.selectLabel {
+  color: rgb(255 255 255 / 70%);
+  font-size: .75rem;
+  font-weight: 500;
+}
+
+.selectWrap {
+  position: relative;
+}
+
+.selectWrap::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  right: 1rem;
+  width: .5rem;
+  height: .5rem;
+  border-right: 2px solid rgb(255 255 255 / 80%);
+  border-bottom: 2px solid rgb(255 255 255 / 80%);
+  pointer-events: none;
+  transform: translateY(-70%) rotate(45deg);
+}
+
+.select {
+  width: 100%;
+  min-width: 0;
+  appearance: none;
+  padding: .65rem 2.75rem .65rem .75rem;
+  border: 1px solid rgb(255 255 255 / 15%);
+  border-radius: .5rem;
+  background: #0c292b;
+  color: rgb(255 255 255 / 90%);
+  font: inherit;
+  font-size: .875rem;
+  cursor: pointer;
+}
+
+.showcase select:focus-visible { outline: 2px solid #5eead4; outline-offset: 3px; }
+
+.comparison { display: grid; gap: 1.5rem; }
+.source, .output { min-width: 0; }
+.output { border-top: 1px solid rgb(255 255 255 / 10%); padding-top: 1.5rem; }
+.label { margin-bottom: 1rem; color: rgb(255 255 255 / 90%); font-size: 1rem; font-weight: 600; }
+.body { font-size: .875rem; line-height: 1.75; color: rgb(255 255 255 / 70%); }
+.structured { display: grid; gap: 1rem; }
+.sectionTitle { margin-bottom: .3rem; color: rgb(255 255 255 / 90%); font-size: .875rem; font-weight: 600; }
+.caption { margin-top: 1.5rem; font-size: .7rem; line-height: 1.6; color: rgb(255 255 255 / 45%); }
+
+@media (min-width: 900px) {
+  .comparison { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 0; }
+  .source, .output { padding-inline: 1.5rem; border-top: 0; }
+  .source { padding-left: 0; border-right: 1px solid rgb(255 255 255 / 10%); }
+  .output { border-left: 0; border-right: 1px solid rgb(255 255 255 / 10%); }
+  .output:last-child { padding-right: 0; border-right: 0; }
+}

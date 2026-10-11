@@ -7,9 +7,11 @@ import { motion } from "framer-motion";
 
 export interface WorkRole {
   title: string;
-  company: string;
+  company?: string;
   location?: string;
   period: string;
+  /** Introductory paragraph shown before the bullet points. */
+  description?: string;
   /** Bullet points; omit or leave empty to hide the list. */
   highlights?: string[];
   /**
@@ -31,7 +33,7 @@ function RoleEmblem({ role }: { role: WorkRole }) {
       <div className="relative h-14 w-14 shrink-0 overflow-hidden rounded-lg bg-white/5 ring-1 ring-white/10 transition-[transform,box-shadow] duration-300 ease-out group-hover:ring-white/25 group-hover:shadow-md">
         <Image
           src={role.logoSrc}
-          alt={role.logoAlt ?? `${role.company} logo`}
+          alt={role.logoAlt ?? `${role.company ?? role.title} logo`}
           fill
           sizes="56px"
           className="object-cover object-center transition-transform duration-300 ease-out group-hover:scale-105"
@@ -49,17 +51,37 @@ function RoleEmblem({ role }: { role: WorkRole }) {
 
 const workRoles: WorkRole[] = [
   {
-    title: "Data Integrity Analyst",
+    title: "Independent AI Consultant",
+    period: "Sep 2026 – Present",
+    description:
+      "Leading an AI transformation engagement for a UK-based restaurant chain, scoping a central LLM-powered data layer with agentic workflows across the client's operations, alongside a data migration and business intelligence initiative.",
+    highlights: [
+      "Building a fully on-premise, secure role-based backend",
+      "Automating receipt/invoice digitization via OCR and kitchen-usage invoicing",
+      "Implementing IoT-based temperature monitoring with real-time alerting across freezers and fridges",
+      "Scoping a replacement for the client's online ordering system",
+    ],
+  },
+  {
+    title: "Support Engineer & AI Automation",
     company: "Attentive",
     location: "United States (Remote)",
     period: "Oct 2025 – Present",
     highlights: [
-      "Automated end-to-end investigation workflows with LangGraph and Playwright.",
-      "Implemented and validated TypeScript event tracking across major US and international retail sites (e.g. Wayfair, Samsung).",
-      "Debugged client-side tracking, e-commerce integrations, and signup unit / banner behavior.",
-      "Aligned with client stakeholders to clarify requirements and close integration gaps.",
+      "Resolved 1,000+ support tickets across L1–L3 tiers for 700+ enterprise accounts (up to $80K+ tier), with a median resolution time under 24 hours on high-priority issues. L3 work involved resolving niche revenue attribution and event tracking bugs, and reverse-engineering site DOM structure and window objects to build custom event tracking for platforms with no native SDK support.",
+      "Designed and built an end-to-end diagnostic workflow (LangGraph, Playwright, FastAPI, Pub/Sub) that scraped and aggregated signals across clients’ sites, Zendesk, DataDog, and Looker without API access, cutting triage time ~20%.",
     ],
     logoSrc: "/work-logos/attentive.png",
+  },
+  {
+    title: "AI Education Lead",
+    company: "RBCs Team (NGO)",
+    location: "Damascus, Syria",
+    period: "Nov 2023 – Sep 2025",
+    highlights: [
+      "Led curriculum development for NGO's first NLP course, mentoring and training 100+ CS students on foundational NLP topics from statistical language models to transformers, embeddings, and sequence modeling",
+    ],
+    logoSrc: "/work-logos/rbcs.jpg",
   },
   {
     title: "Data Science Trainee",
@@ -67,17 +89,9 @@ const workRoles: WorkRole[] = [
     location: "Jordan (Remote)",
     period: "Mar 2024 – Aug 2024",
     highlights: [
-      "Collaborated on two machine learning projects: Diamond Pricing Prediction and Music Genre Classification.",
-      "Worked on multiple BI tasks including Power BI, Pandas, NumPy, and Seaborn.",
+      "Built pricing prediction models and an automated music genre classifier; developed Power BI dashboards over an Olympics dataset.",
     ],
     logoSrc: "/work-logos/shai.jpeg",
-  },
-  {
-    title: "Technical Support & Operations Manager",
-    company: "Nakkash Tech Store",
-    location: "Lebanon · During High School",
-    period: "Jul 2017 – Nov 2019",
-    // logoSrc: "/work-logos/nakkash.png",
   },
 ];
 
@@ -109,7 +123,7 @@ const WorkExperience = () => {
               }}
             >
               <div
-                className="group relative overflow-hidden rounded-lg border border-white/10 bg-[#0a1f1a]/50 p-6 sm:p-8 shadow-sm transition-all duration-300 ease-out hover:-translate-y-1 hover:border-white/20 hover:bg-[#0a1f1a]/70 hover:shadow-[0_24px_48px_-28px_rgba(0,0,0,0.55)]"
+                className="group relative overflow-hidden rounded-lg border border-white/20 bg-white/[0.04] p-6 sm:p-8 shadow-sm backdrop-blur-sm transition-all duration-300 ease-out hover:-translate-y-1 hover:bg-white/[0.08] hover:shadow-[0_24px_48px_-28px_rgba(0,0,0,0.55)]"
                 onMouseMove={(e) => {
                   const el = e.currentTarget;
                   const r = el.getBoundingClientRect();
@@ -140,7 +154,9 @@ const WorkExperience = () => {
                         <h3 className="text-xl font-semibold text-white transition-colors duration-300 group-hover:text-white">
                           {role.title}
                         </h3>
-                        <p className="font-medium text-white/90">{role.company}</p>
+                        {role.company ? (
+                          <p className="font-medium text-white/90">{role.company}</p>
+                        ) : null}
                         {role.location ? (
                           <p className="mt-0.5 text-sm text-white/70">
                             {role.location}
@@ -152,6 +168,11 @@ const WorkExperience = () => {
                       {role.period}
                     </p>
                   </div>
+                  {role.description ? (
+                    <p className="mb-4 text-white/80 leading-relaxed sm:pl-8">
+                      {role.description}
+                    </p>
+                  ) : null}
                   {role.highlights && role.highlights.length > 0 ? (
                     <ul className="list-outside list-disc space-y-2 pl-6 text-white/80 leading-relaxed marker:text-white/45 sm:pl-14">
                       {role.highlights.map((item, i) => (

@@ -58,7 +58,7 @@ const Hero = () => {
             repeat={Infinity}
           />
          <p className="max-w-xl text-lg text-white/70 mb-8">
-         I&apos;m glad you&apos;re here. Below, you can try my work first-hand.
+         Glad you&apos;re here! Below you can try my work first-hand.
 </p>
           {/* CTA and Socials */}
           <div className="flex items-center justify-center md:justify-start gap-4">
@@ -116,8 +116,8 @@ const Hero = () => {
       </div>
 
 <motion.a
-  href="#about"
-  aria-label="Continue to About section"
+  href="#work-experience"
+  aria-label="Continue to Work Experience section"
   className="absolute bottom-10 left-1/2 z-10 -translate-x-1/2 rounded-full text-white/50 outline-none ring-offset-2 ring-offset-[#0a1a1c] transition-colors hover:text-white/80 focus-visible:ring-2 focus-visible:ring-teal-300/60"
   whileHover={{ scale: 1.2, y: -5 }}
 >

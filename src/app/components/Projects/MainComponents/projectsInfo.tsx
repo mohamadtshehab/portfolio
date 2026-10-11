@@ -4,6 +4,8 @@ import type { PortfolioProject } from './portfolioProject';
 export type { PortfolioProject } from './portfolioProject';
 
 const JstorRag = dynamic(() => import('../JstorRag/index'), { ssr: false });
+const VoiceAssistant = dynamic(() => import('../VoiceAssistant/index'), { ssr: false });
+const AbstractFineTuning = dynamic(() => import('../AbstractFineTuning/index'), { ssr: false });
 const Maknoon = dynamic(() => import('../Maknoon/index'), { ssr: false });
 const Remedya = dynamic(() => import('../Remedya/index'), { ssr: false });
 const CensusDataCleaning = dynamic(() => import('../CensusDataCleaning/index'), {
@@ -46,8 +48,8 @@ const projects: PortfolioProject[] = [
   },
   {
     category: 'intelligent-generative-ai',
-    title: 'JSTOR RAG — article-scoped research assistant',
-    description: `A research extension for JSTOR: When you’re on an article, it ingests that paper, builds a search index for it, and answers questions and follow-ups about it.`,
+    title: 'On-premise JSTOR RAG — article-scoped research assistant',
+    description: `A local research extension for JSTOR: it ingests the article you’re reading, builds a local search index, and answers questions and follow-ups about that paper. Document processing, embeddings, storage, and LLM inference all run locally.`,
     technologies: [
       'FastAPI',
       'LangGraph',
@@ -56,13 +58,28 @@ const projects: PortfolioProject[] = [
       'Playwright',
       'Chrome MV3',
       'Svelte 5',
-      'Google Gemini',
-      'Groq',
+      'Ollama',
       'Pydantic Settings',
       'WebSockets',
     ],
     githubUrl: 'https://github.com/mohamadtshehab/jstor-rag',
     interactiveComponent: <JstorRag />,
+    interactive: true,
+  },
+  {
+    category: 'intelligent-generative-ai',
+    title: 'Local Voice Assistant',
+    description: `A CPU-optimized voice assistant that detects speech, transcribes it, maintains conversational context, and speaks responses using local AI models.`,
+    technologies: ['Python', 'Silero VAD', 'faster-whisper', 'Ollama', 'Phi', 'Piper', 'ONNX', 'NumPy'],
+    interactiveComponent: <VoiceAssistant />,
+    interactive: true,
+  },
+  {
+    category: 'intelligent-generative-ai',
+    title: 'Research Abstract Explainer — LoRA Fine-Tuning',
+    description: `Fine-tuned a language model with fewer than 4 billion parameters to explain research abstracts in Gemini’s style. Built a dataset from 400+ arXiv abstracts and Playwright-automated Gemini explanations, cleaned and tokenized the exports, and trained a LoRA adapter with Unsloth. The model runs on a laptop without a GPU.`,
+    technologies: ['Python', 'arXiv API', 'Playwright', 'Google Gemini', 'Unsloth', 'LoRA', 'Instruction Fine-Tuning'],
+    interactiveComponent: <AbstractFineTuning />,
     interactive: true,
   },
   {

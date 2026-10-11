@@ -31,6 +31,7 @@ const Hero = () => {
   }, [advance]);
   return (
     <section
+      id="about"
       className="min-h-screen flex items-center justify-center text-white p-8 relative overflow-hidden"
     >
       <div className="container mx-auto flex flex-col md:flex-row items-center justify-center gap-16 relative z-10">

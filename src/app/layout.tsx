@@ -3,6 +3,7 @@ import type { Metadata } from "next";
 import "./globals.css";
 import Header from './components/Header';
 import ParticlesBackground from './components/ParticlesBackground';
+import PortfolioScale from './components/PortfolioScale';
 import { getSiteUrl } from '@/lib/siteUrl';
 
 const siteUrl = getSiteUrl();
@@ -51,7 +52,7 @@ export default function RootLayout({
         <ParticlesBackground />
         
         <Header />
-        {children}
+        <PortfolioScale>{children}</PortfolioScale>
       </body>
     </html>
   );

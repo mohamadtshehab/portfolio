@@ -48,6 +48,8 @@ export default function Header() {
   const [activeSection, setActiveSection] = useState("");
 
   useEffect(() => {
+    const topMargin = Math.round(window.innerHeight * 0.4);
+    const bottomMargin = Math.round(window.innerHeight * 0.5);
     const observer = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
@@ -56,7 +58,7 @@ export default function Header() {
           }
         });
       },
-      { rootMargin: "-40% 0px -60% 0px" },
+      { rootMargin: `-${topMargin}px 0px -${bottomMargin}px 0px` },
     );
 
     document.querySelectorAll("section[id]").forEach((section) => {
@@ -67,9 +69,9 @@ export default function Header() {
 
   const navLinks = [
     { href: "#work-experience", label: "Work" },
-    { href: "#skills", label: "Skills" },
     { href: "#projects", label: "Projects" },
     { href: "#certificates", label: "Certificates" },
+    { href: "#skills", label: "Skills" },
     { href: "#contact", label: "Contact" },
   ];
 
@@ -90,7 +92,7 @@ export default function Header() {
         />
       ) : null}
 
-      <div className="relative z-[55] mx-auto mt-3 max-w-[min(400px,calc(100%-1.5rem))] px-0 sm:mt-4">
+      <div className="relative z-[55] mx-auto mt-3 max-w-[min(500px,calc(100%-1.5rem))] px-0 sm:mt-4">
         <div
           className="flex flex-col overflow-hidden rounded-2xl shadow-lg md:rounded-full md:px-1 md:py-0.5"
           style={{
@@ -131,7 +133,7 @@ export default function Header() {
                 className={`rounded-xl px-3 py-2.5 text-center text-sm font-medium transition-colors duration-300 md:rounded-full md:px-2.5 md:py-1.5 ${
                   activeSection === link.href.substring(1)
                     ? "bg-white/10 text-white"
-                    : "text-gray-300 hover:bg-white/5 hover:text-white md:hover:bg-transparent"
+                    : "text-gray-300 hover:bg-white/10 hover:text-white"
                 }`}
               >
                 {link.label}

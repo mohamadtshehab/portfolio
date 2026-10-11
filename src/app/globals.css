@@ -95,6 +95,9 @@ body {
   min-height: 100vh;
 }
 
+.portfolio-scale {
+  zoom: 1.04;
+}
 
 @keyframes sparkle {
   from { transform: translateX(0); }

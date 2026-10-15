@@ -195,12 +195,12 @@ export default function BusinessPage({ initialLanguage, hasLanguageCookie }: { i
   }
 
   return <div ref={pageRef} className={styles.page} lang={language} dir={language === 'ar' ? 'rtl' : 'ltr'} data-language-switching={languageSwitching} aria-busy={languageSwitching} style={{ visibility: languageReady ? 'visible' : 'hidden' }}>
-    <FloatingNav links={navLinks} mobileLabel={copy.nav.menu} openLabel={copy.nav.openMenu} closeLabel={copy.nav.closeMenu} direction={language === 'ar' ? 'rtl' : 'ltr'} wide animateOnLoad
+    <FloatingNav links={navLinks} hintLabel={copy.nav.menu} openLabel={copy.nav.openMenu} closeLabel={copy.nav.closeMenu} direction={language === 'ar' ? 'rtl' : 'ltr'} wide animateOnLoad
       extra={<div className={`flex items-center justify-center gap-0.5 border-t border-white/10 pt-2 lg:border-t-0 lg:pt-0 ${language === 'ar' ? 'lg:mr-1 lg:border-r lg:pr-2' : 'lg:ml-1 lg:border-l lg:pl-2'}`} dir="ltr" role="group" aria-label="Language / اللغة">
         <button type="button" lang="en" aria-pressed={language === 'en'} onClick={() => changeLanguage('en')}
-          className={`min-h-10 rounded-full px-2 py-1.5 text-sm font-medium transition-colors ${language === 'en' ? 'bg-white/10 text-teal-100' : 'text-gray-300 hover:bg-white/10 hover:text-white'}`}>English</button>
+          className={`min-h-10 lg:min-h-0 rounded-full px-2 py-1.5 text-sm font-medium transition-colors ${language === 'en' ? 'bg-white/10 text-teal-100' : 'text-gray-300 hover:bg-white/10 hover:text-white'}`}>English</button>
         <button type="button" lang="ar" aria-pressed={language === 'ar'} onClick={() => changeLanguage('ar')}
-          className={`min-h-10 rounded-full px-2 py-1.5 text-sm font-medium transition-colors ${language === 'ar' ? 'bg-white/10 text-teal-100' : 'text-gray-300 hover:bg-white/10 hover:text-white'}`}>العربية</button>
+          className={`min-h-10 lg:min-h-0 rounded-full px-2 py-1.5 text-sm font-medium transition-colors ${language === 'ar' ? 'bg-white/10 text-teal-100' : 'text-gray-300 hover:bg-white/10 hover:text-white'}`}>العربية</button>
       </div>} />
 
     <main>

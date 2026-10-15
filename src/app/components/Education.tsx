@@ -9,7 +9,7 @@ export default function Education() {
           Education
         </h2>
         <div className="mx-auto flex max-w-4xl items-center justify-center gap-4">
-          <div className="relative h-20 w-20 shrink-0 overflow-hidden rounded-lg bg-white/5 ring-1 ring-white/10">
+          <div className="relative h-20 w-20 shrink-0 overflow-hidden rounded-lg bg-white ring-1 ring-white/10">
             <Image
               src={damascusUniversityLogo}
               alt="Damascus University logo"

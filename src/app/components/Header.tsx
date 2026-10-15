@@ -10,6 +10,7 @@ const portfolioLinks = [
   { href: "#skills", label: "Skills" },
   { href: "#education", label: "Education" },
   { href: "#contact", label: "Contact" },
+  { href: "/business", label: "Business" },
 ];
 
 export default function Header() {

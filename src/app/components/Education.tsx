@@ -8,8 +8,8 @@ export default function Education() {
         <h2 className="mb-12 text-center text-4xl font-bold text-white">
           Education
         </h2>
-        <div className="mx-auto flex max-w-4xl flex-col items-center justify-center gap-4">
-          <div className="relative h-20 w-20 shrink-0 overflow-hidden rounded-lg bg-white ring-1 ring-white/10">
+        <div className="mx-auto flex max-w-4xl items-center justify-center gap-4">
+          <div className="relative h-20 w-20 shrink-0 overflow-hidden rounded-lg bg-white/5 ring-1 ring-white/10">
             <Image
               src={damascusUniversityLogo}
               alt="Damascus University logo"
@@ -18,11 +18,9 @@ export default function Education() {
               className="object-cover object-center"
             />
           </div>
-          <p className="text-center text-lg text-white/90">
-            <span className="block">
-              Bachelor&apos;s in Engineering, IT Engineering (AI Specialization)
-            </span>
-            <span className="block">Damascus University</span>
+          <p className="text-lg text-white/90">
+            Bachelor&apos;s in Engineering, IT Engineering (AI Specialization) —
+            Damascus University
           </p>
         </div>
       </div>

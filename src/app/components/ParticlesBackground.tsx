@@ -110,6 +110,7 @@ const ParticlesBackground = () => {
         width: "100vw",
         height: "100vh",
         zIndex: -1,
+        opacity: "var(--business-particles-opacity, 1)",
         pointerEvents: "none",
       }}
     />

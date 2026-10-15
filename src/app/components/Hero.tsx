@@ -43,6 +43,9 @@ const Hero = () => {
         >
           <p className="text-xl md:text-2xl text-white/80 mb-2">Hello, I&apos;m</p>
           <h1 className="text-5xl md:text-7xl font-bold">Mohamad Shehab</h1>
+          <p className="max-w-xl text-lg text-white/70 mt-3 mb-4">
+            Helping businesses decide where AI will help—then leading the engineering from paper to production.
+          </p>
           <TypeAnimation
             sequence={[
               'AI Engineer',
@@ -57,9 +60,6 @@ const Hero = () => {
             className="text-3xl md:text-4xl font-semibold mt-2 mb-6 text-[#a3d7c3]"
             repeat={Infinity}
           />
-         <p className="max-w-xl text-lg text-white/70 mb-8">
-         Glad you&apos;re here! Below you can try my work first-hand.
-</p>
           {/* CTA and Socials */}
           <div className="flex items-center justify-center md:justify-start gap-4">
           <a 
@@ -101,7 +101,7 @@ const Hero = () => {
               <Image
                 key={src}
                 src={src}
-                alt={`Mohamad Shehab — photo ${i + 1} of ${HERO_IMAGES.length}`}
+                alt="Mohamad Shehab"
                 className={`absolute inset-0 object-cover transition-opacity duration-700 ease-in-out ${
                   i === photoIndex ? "opacity-100" : "opacity-0"
                 }`}

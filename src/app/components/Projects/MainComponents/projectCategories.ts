@@ -4,6 +4,7 @@ export type ProjectCategoryId =
   | "intelligent-generative-ai"
   | "data-mining-quality"
   | "ml-supervised"
+  | "systems-infrastructure"
   | "full-stack";
 
 export const PROJECT_CATEGORY_META: Record<
@@ -22,6 +23,10 @@ export const PROJECT_CATEGORY_META: Record<
     label: "Supervised machine learning",
     shortLabel: "Supervised ML",
   },
+  "systems-infrastructure": {
+    label: "Systems & infrastructure",
+    shortLabel: "Systems",
+  },
   "full-stack": {
     label: "Full-stack applications",
     shortLabel: "Full-stack",
@@ -32,5 +37,6 @@ export const PROJECT_CATEGORY_ORDER: ProjectCategoryId[] = [
   "intelligent-generative-ai",
   "data-mining-quality",
   "ml-supervised",
+  "systems-infrastructure",
   "full-stack",
 ];

@@ -27,8 +27,20 @@ const MusicGenreClassification = dynamic(
 const ConsultationApp = dynamic(() => import('../ConsultationApp/index'), {
   ssr: false,
 });
+const AutoscalingLlmApi = dynamic(() => import('../AutoscalingLlmApi/index'), {
+  ssr: false,
+});
 
 const projects: PortfolioProject[] = [
+  {
+    category: 'systems-infrastructure',
+    title: 'Autoscaling Local LLM API',
+    description: `A Docker Compose stack for local inference with an authenticated FastAPI gateway, a shared request queue, least-connections routing, and a controller that adds or drains Ollama replicas as demand changes. Prometheus and Grafana expose capacity and latency; a Locust benchmark compares autoscaling with fixed capacity.`,
+    technologies: ['Docker Compose', 'Python', 'FastAPI', 'Ollama', 'Prometheus', 'Grafana', 'Locust'],
+    githubUrl: 'https://github.com/mohamadtshehab/local-llm-endpoint-autoscaling',
+    interactiveComponent: <AutoscalingLlmApi />,
+    interactive: true,
+  },
   {
     category: 'intelligent-generative-ai',
     title: 'Maknoon',

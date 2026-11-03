@@ -44,7 +44,7 @@ const Hero = () => {
           <p className="text-xl md:text-2xl text-white/80 mb-2">Hello, I&apos;m</p>
           <h1 className="text-5xl md:text-7xl font-bold">Mohamad Shehab</h1>
           <p className="max-w-xl text-lg text-white/70 mt-3 mb-4">
-            Helping businesses decide where AI will help—then leading the engineering from paper to production.
+            Glad you&apos;re here! Below you can try my work first-hand.
           </p>
           <TypeAnimation
             sequence={[
